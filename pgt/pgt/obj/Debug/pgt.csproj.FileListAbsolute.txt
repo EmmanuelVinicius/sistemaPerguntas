@@ -1,0 +1,7 @@
+C:\Users\emmanueloliveira\source\repos\pgt\pgt\obj\Debug\pgt.csprojAssemblyReference.cache
+C:\Users\emmanueloliveira\source\repos\pgt\pgt\obj\Debug\pgt.csproj.CoreCompileInputs.cache
+C:\Users\emmanueloliveira\source\repos\pgt\pgt\bin\Debug\pgt.exe.config
+C:\Users\emmanueloliveira\source\repos\pgt\pgt\bin\Debug\pgt.exe
+C:\Users\emmanueloliveira\source\repos\pgt\pgt\bin\Debug\pgt.pdb
+C:\Users\emmanueloliveira\source\repos\pgt\pgt\obj\Debug\pgt.exe
+C:\Users\emmanueloliveira\source\repos\pgt\pgt\obj\Debug\pgt.pdb
