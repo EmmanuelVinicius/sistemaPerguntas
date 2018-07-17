@@ -7,6 +7,7 @@ namespace sistemaPerguntasWeb.Models
 {
     class Perguntas
     {
+		/*
         private string _ID;
         private string _corpo;
         private string _opcao1;
@@ -14,15 +15,16 @@ namespace sistemaPerguntasWeb.Models
         private string _opcao3;
         private string _opcao4;
         private string _certo;
-
-        public string ID { get; set; }
+		*/
+        public int ID { get; set; }
         public string corpo { get; set; }
         public string opcao1 { get; set; }
         public string opcao2 { get; set; }
         public string opcao3 { get; set; }
         public string opcao4 { get; set; }
-        public string certo { get; set; }
-        public Perguntas()
+        public char certo { get; set; }
+		/*
+		public Perguntas()
         {
             ID = _ID;
             corpo = _corpo;
@@ -32,5 +34,6 @@ namespace sistemaPerguntasWeb.Models
             opcao4 = _opcao4;
             certo = _certo;
         }
+		*/
     }
 }
