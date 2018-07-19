@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data.SqlClient;
+using System.Configuration;
 
 namespace sistemaPerguntasWeb.Models
 {
-	public class Users
+    public class Users
 	{
 		public int id { get; set; }
 		public string usuario { get; set; }
@@ -20,18 +18,32 @@ namespace sistemaPerguntasWeb.Models
 		private string _senha;
 		private string _email;
 		private string _nomeCompleto;
-		public bool _sexo;
-		public bool _termos;
+		private bool _sexo;
+		private bool _termos;
 
 		public Users()
 		{
-			id = _id;
+			//id = _id;
 			usuario = _usuario;
 			senha = _senha;
 			email = _email;
 			nomeCompleto = _nomeCompleto;
 			sexo = _sexo;
 			termos = _termos;
+            ConexBanco();
 		}
+
+        private void ConexBanco()
+        {
+            string strConexao = ConfigurationManager.ConnectionStrings["iusConnectionString"].ConnectionString;
+            SqlConnection banco = new SqlConnection(strConexao);
+            SqlCommand ins = new SqlCommand();
+            ins.CommandText = $@"INSERT INTO Perguntas
+                VALUES ('{_usuario}','{_senha}', '{_email}', '{_nomeCompleto}', '{_sexo}', '{_termos}' )";
+            ins.Connection = banco;
+            banco.Open();
+            ins.ExecuteNonQuery();
+            banco.Close();
+        }
 	}
 }
