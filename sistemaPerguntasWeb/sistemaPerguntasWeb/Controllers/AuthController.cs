@@ -24,20 +24,14 @@ namespace sistemaPerguntasWeb.Controllers
 		{
             if (!ModelState.IsValid)
             {
+                ModelState.AddModelError("", "Digite os dados corretamente");
                 return View();
             }
-            
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
-            Users users = new Users();
+            var users = new Login();
             //Retirar
-            if (model.Usuario == users.usuario && model.Senha == users.senha)
+            if (users.ConexBanco(model.Usuario, model.Senha))
             {
                 var identity = new ClaimsIdentity(new[]{
-                    new Claim(ClaimTypes.Name, users.usuario),
-                    new Claim(ClaimTypes.Email, users.email),
                     new Claim(ClaimTypes.Country, "Brasil")
                 },
                 "ApplicationCookie");
@@ -47,35 +41,27 @@ namespace sistemaPerguntasWeb.Controllers
 
                 authManager.SignIn(identity);
 
-                return Redirect(GetRedirectUrl(model.ReturnUrl));
+                return Redirect("Home/Index");
 
             }
             //Até aqui
-            ModelState.AddModelError("", "Digite os dados corretamente");
-			return View();
+            ModelState.AddModelError("", "Usuário não cadastrado!");
+            return View();
 		}
         [HttpPost]
-		public ActionResult Register(/*int _id,*/ string _usuario,string _senha,string _email,string _nomeCom,bool _sexo,bool _termos
-)
+		public ActionResult Register(Users model)
         {
-			Users users = new Users
+            if (!ModelState.IsValid)
             {
-                usuario = _usuario,
-                senha = _senha,
-                email = _email,
-                nomeCompleto = _nomeCom,
-                sexo = _sexo,
-                termos = _termos
-            };
-			return View(users);
+                ModelState.AddModelError("", "Digite os dados corretamente");
+                return View();
+            }
+            Users users = new Users();
+			return Redirect("google.com");
 		}
 		public ActionResult ForgPass()
 		{
 			return View();
-		}
-		public string Retorno()
-		{
-			return "Passou, cara";
 		}
 	}
 }
