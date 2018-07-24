@@ -10,5 +10,21 @@ namespace sistemaPerguntasWeb.Controllers
         {
             return View();
         }
+        public ActionResult MinhasAulas()
+        {
+            return View();
+        }
+        public ActionResult Programacao()
+        {
+            return View();
+        }
+        public ActionResult Perfil()
+        {
+            return View();
+        }
+        public RedirectToRouteResult Provinha()
+        {
+            return RedirectToAction("Legislacao", "Perguntas");
+        }
     }
 }

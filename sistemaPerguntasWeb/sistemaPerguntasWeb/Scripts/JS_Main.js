@@ -7,8 +7,8 @@
         'btn-loading': '<i class="fa fa-spinner fa-pulse"></i>',
         'btn-success': '<i class="fa fa-check"></i>',
         'btn-error': '<i class="fa fa-remove"></i>',
-        'msg-success': 'Tudo certo! Redirecionando...',
-        'msg-error': 'Usuário ou senha inválido!',
+        'msg-success': 'Redirecionando...',
+        'msg-error': 'Usuário ou senha inválido(a)!',
         'useAJAX': true,
     };
 
@@ -30,11 +30,11 @@
         if (options['useAJAX'] == true) {
             // Dummy AJAX request (Replace this with your AJAX code)
             // If you don't want to use AJAX, remove this
-            dummy_submit_form($(this));
+            submit_form($(this));
 
             // Cancel the normal submission.
             // If you don't want to use AJAX, remove this
-            return false;
+            //return false;
         }
     });
 
@@ -134,14 +134,31 @@
     // Dummy Submit Form (Remove this)
     //----------------------------------------------
     // This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
-    function dummy_submit_form($form) {
+    function submit_form($form) {
         if ($form.valid()) {
             form_loading($form);
 
-            setTimeout(function () {
-                form_success($form);
-            }, 2000);
+            $.ajax({
+                url: "/Auth/Login",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    Usuario: $('#lg_username').val(),
+                    Senha: $('#lg_password').val()
+                }),
+                success: function (result) {
+                    alert("Deu bom");
+                    form_success($form);
+                },
+                error: function (result) {
+                    alert("Deu ruim")
+                    form_failed($form);
+                }
+            });
+            return true;
         }
+        else
+            return false;
     }
-
-})(jQuery);
+})(jQuery); 

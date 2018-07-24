@@ -32,7 +32,8 @@ namespace sistemaPerguntasWeb.Controllers
             if (users.ConexBanco(model.Usuario, model.Senha))
             {
                 var identity = new ClaimsIdentity(new[]{
-                    new Claim(ClaimTypes.Country, "Brasil")
+                    new Claim(ClaimTypes.Country, "Brasil")//,
+                    //new Claim(ClaimTypes.Name, model.Usuario),
                 },
                 "ApplicationCookie");
 

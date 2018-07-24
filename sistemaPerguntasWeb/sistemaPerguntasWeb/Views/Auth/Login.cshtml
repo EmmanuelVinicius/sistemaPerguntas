@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Login";
     ViewBag.Page = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 <div class="text-center" style="padding:50px 0">
     <div class="logo">Entrar</div>
@@ -10,18 +10,17 @@
         @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @id = "login-form", @class = "text-left" }))
         {
             <!--<form id="login-form" class="text-left" action="/Auth/Login">-->
-            @Html.ValidationSummary(false, "", new { @class = "login-form-main-message" })
-            <!--<div class="login-form-main-message"></div>-->
+            <div class="login-form-main-message"></div>
             <div class="main-login-form">
                 <div class="login-group">
                     <div class="form-group">
                         <label for="lg_username" class="sr-only">Usuário</label>
-                        @Html.TextBoxFor(x => x.Usuario, "", new { @class = "form-control", @id = "lg_username", @placeholder = "usuário" })
+                        @Html.TextBoxFor(x => x.Usuario, "", new { @class = "form-control", @id = "lg_username", @placeholder = "usuário", @required = "required" })
                         <!--<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="usuário">-->
                     </div>
                     <div class="form-group">
                         <label for="lg_password" class="sr-only">Senha</label>
-                        @Html.TextBoxFor(x => x.Senha, "", new { @class = "form-control", @id = "lg_password", @type = "password", @placeholder = "senha" })
+                        @Html.TextBoxFor(x => x.Senha, "", new { @class = "form-control", @id = "lg_password", @type = "password", @placeholder = "senha", @required = "required" })
                         <!--<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="senha">-->
                     </div>
                     <div class="form-group login-group-checkbox">
