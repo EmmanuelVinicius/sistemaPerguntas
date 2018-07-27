@@ -24,12 +24,10 @@ namespace sistemaPerguntasWeb.Controllers
 		{
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Digite os dados corretamente");
+                //return Json("erro");
                 return View();
             }
-            var users = new Login();
-            //Retirar
-            if (users.ConexBanco(model.Usuario, model.Senha))
+            if (model.Conex(model.Usuario, model.Senha))
             {
                 var identity = new ClaimsIdentity(new[]{
                     new Claim(ClaimTypes.Country, "Brasil")//,
@@ -42,13 +40,30 @@ namespace sistemaPerguntasWeb.Controllers
 
                 authManager.SignIn(identity);
 
-                return Redirect("Home/Index");
+                //return Json("passou", "Cara");
+                return Redirect(GetRedirectUrl(model.ReturnUrl));
 
             }
-            //Até aqui
-            ModelState.AddModelError("", "Usuário não cadastrado!");
+            ModelState.AddModelError("", "Usuário ou senha inválidos");
+                //return Json("erro");
             return View();
-		}
+        }
+        private string GetRedirectUrl(string returnUrl)
+        {
+            if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
+            {
+                return Url.Action("index", "home");
+            }
+            return returnUrl;
+        }
+        public ActionResult Logout()
+        {
+            var ctx = Request.GetOwinContext();
+            var authManager = ctx.Authentication;
+
+            authManager.SignOut("ApplicationCookie");
+            return RedirectToAction("index", "home");
+        }
         [HttpPost]
 		public ActionResult Register(Users model)
         {
@@ -58,7 +73,7 @@ namespace sistemaPerguntasWeb.Controllers
                 return View();
             }
             Users users = new Users();
-			return Redirect("google.com");
+			return Redirect("");
 		}
 		public ActionResult ForgPass()
 		{

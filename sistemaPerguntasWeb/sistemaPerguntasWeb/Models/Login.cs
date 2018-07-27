@@ -17,12 +17,21 @@ namespace sistemaPerguntasWeb.Models
         [HiddenInput]
         public string ReturnUrl { get; set; }
 
-        public bool ConexBanco(string user, string pass)
+        public bool Conex(string user, string pass)
+        {
+            Usuario = user;
+            Senha = pass;
+            if (Banco())
+                return true;
+            else
+                return false;
+        }
+        private bool Banco()
         {
             string strConexao = ConfigurationManager.ConnectionStrings["iusConnectionString"].ConnectionString;
             SqlConnection banco = new SqlConnection(strConexao);
             SqlCommand ins = new SqlCommand();
-            ins.CommandText = $"SELECT COUNT(*) FROM Escopos WHERE Escopo = '{user}' AND IDEscopo = '{pass}'";
+            ins.CommandText = $"SELECT * FROM Escopos WHERE Escopo = '{Usuario}' AND IDEscopo = '{Senha}'";
             ins.Connection = banco;
             banco.Open();
             var dr = ins.ExecuteReader();
