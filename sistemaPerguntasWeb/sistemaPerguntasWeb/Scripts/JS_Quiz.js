@@ -7,6 +7,7 @@
             loading.hide();
         });
 
+
     $("label.btn").on('click', function () {
         var choice = $(this).find('input:radio').val();
         $('#loadbar').show();
@@ -15,11 +16,27 @@
             $("#answer").html($(this).checking(choice));
             $('#quiz').show();
             $('#loadbar').fadeOut();
+            $.ajax({
+                url: "Pergunta/Legislacao",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    choice
+                }),
+                success: function (result) {
+                    if (choice == certo) {
+                        pontos++
+                    } else {
+                        
+                    }
+                }
+            })
             /* something else */
         }, 1500);
     });
 
-    $ans = 3;
+    //$ans = 3;
 
     $.fn.checking = function (ck) {
         if (ck != $ans)

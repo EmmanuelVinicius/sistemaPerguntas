@@ -22,11 +22,6 @@ namespace sistemaPerguntasWeb.Controllers
 		[HttpPost]
 		public ActionResult Login(Login model)
 		{
-            if (!ModelState.IsValid)
-            {
-                //return Json("erro");
-                return View();
-            }
             if (model.Conex(model.Usuario, model.Senha))
             {
                 var identity = new ClaimsIdentity(new[]{
@@ -39,13 +34,18 @@ namespace sistemaPerguntasWeb.Controllers
                 var authManager = ctx.Authentication;
 
                 authManager.SignIn(identity);
-
-                //return Json("passou", "Cara");
+                //string scripto = @"$form.find('[type=submit]').addClass('success').html(options['btn-success']);
+                //$form.find('.login-form-main-message').addClass('show success').html(options['msg-success']);";
+                //return Json("{'Entrou':'passou'}", JsonRequestBehavior.AllowGet);
+                //return JavaScript($"<script>{scripto}</script>");
                 return Redirect(GetRedirectUrl(model.ReturnUrl));
 
             }
             ModelState.AddModelError("", "Usuário ou senha inválidos");
-                //return Json("erro");
+            //string script = @"$form.find('[type=submit]').addClass('error').html(options['btn-error']);
+            //$form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);";
+                //return Json("{'Entrou':'nao existe'}");
+                //return JavaScript($"<script>{script}</script>");
             return View();
         }
         private string GetRedirectUrl(string returnUrl)

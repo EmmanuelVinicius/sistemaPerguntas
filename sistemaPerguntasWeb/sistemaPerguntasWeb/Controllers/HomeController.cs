@@ -18,7 +18,7 @@ namespace sistemaPerguntasWeb.Controllers
         {
             return View();
         }
-        public ActionResult Perfil()
+        public ActionResult Direcao()
         {
             return View();
         }

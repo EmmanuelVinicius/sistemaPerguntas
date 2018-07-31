@@ -148,14 +148,11 @@
                     Senha: $('#lg_password').val()
                 }),
                 success: function (result) {
-                    //setTimeout(function () {
-                    alert(result.serialize);
+                    alert(Json.parse(result) + "function success");
                         form_success($form);
-                    //}, 2000);
                 },
                 error: function (result) {
-                    alert('error');
-                    alert(Json.stringify(result));
+                    alert(Json.parse(result) + "function success");
                     form_failed($form);
                 }
             });

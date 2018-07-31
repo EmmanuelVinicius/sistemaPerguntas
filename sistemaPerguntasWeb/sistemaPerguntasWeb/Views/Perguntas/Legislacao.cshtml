@@ -1,7 +1,8 @@
-﻿@{
+﻿@model sistemaPerguntasWeb.Models.Perguntas
+@{
     ViewBag.Title = "Legislação";
     ViewBag.Page = "Quiz";
-    Layout = "../Shared/_Layout.cshtml";
+    Layout = "../Shared/_LayoutLogin.cshtml";
 }
 <!------ Include the above in your HEAD tag ---------->
 <div class="container-fluid bg-info">
@@ -24,10 +25,11 @@
                     </div>
                 </div>
                 <div class="quiz" id="quiz" data-toggle="buttons">
-                    <label class="element-animation1 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">Arroz</label>
-                    <label class="element-animation2 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">Feijão</label>
-                    <label class="element-animation3 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">Batata</label>
-                    <label class="element-animation4 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">Carne</label>
+                    @Html.Label("", new { @class= "element-animation1 btn btn-lg btn-primary btn-block" })
+                    <label class="element-animation1 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1"></label>
+                    <label class="element-animation2 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2"></label>
+                    <label class="element-animation3 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3"></label>
+                    <label class="element-animation4 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4"></label>
                 </div>
             </div>
             <div class="modal-footer text-muted">

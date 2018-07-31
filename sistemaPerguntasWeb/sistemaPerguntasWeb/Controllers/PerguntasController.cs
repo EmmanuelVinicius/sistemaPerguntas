@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sistemaPerguntasWeb.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,8 @@ namespace sistemaPerguntasWeb.Controllers
         // GET: Perguntas
         public ActionResult Legislacao()
         {
-            return View();
+            List<Perguntas> perguntas = new List<Perguntas>();
+            return View(perguntas);
         }
     }
 }

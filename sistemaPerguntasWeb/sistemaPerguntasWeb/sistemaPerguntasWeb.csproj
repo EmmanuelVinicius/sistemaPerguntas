@@ -143,6 +143,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Direcao.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Perguntas.cs" />
     <Compile Include="Models\Users.cs" />
@@ -159,6 +160,8 @@
     <Content Include="Views\Auth\ForgPass.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
+    <Content Include="Views\Home\MinhasAulas.cshtml" />
+    <Content Include="Views\Home\Direcao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
