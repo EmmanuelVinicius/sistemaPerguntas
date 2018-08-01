@@ -34,7 +34,7 @@
 
             // Cancel the normal submission.
             // If you don't want to use AJAX, remove this
-            //return false;
+            return false;
         }
     });
 
@@ -148,11 +148,14 @@
                     Senha: $('#lg_password').val()
                 }),
                 success: function (result) {
-                    alert(Json.parse(result) + "function success");
+                    if (result == 'Home/Index') {
+                        alert(Json.parse(result) + "function success");
                         form_success($form);
+                    } else
+                        form_failed($form);
                 },
                 error: function (result) {
-                    alert(Json.parse(result) + "function success");
+                    alert(Json.parse(result) + "function error");
                     form_failed($form);
                 }
             });
