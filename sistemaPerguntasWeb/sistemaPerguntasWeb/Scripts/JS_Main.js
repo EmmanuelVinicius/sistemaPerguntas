@@ -137,7 +137,7 @@
     function submit_form($form) {
         if ($form.valid()) {
             form_loading($form);
-
+            
             $.ajax({
                 url: "/Auth/Login",
                 type: "POST",
@@ -148,16 +148,10 @@
                     Senha: $('#lg_password').val()
                 }),
                 success: function (result) {
-                    if (result == 'Home/Index') {
-                        alert(Json.parse(result) + "function success");
-                        form_success($form);
-                    } else
+                    if (result == 'Invalido') {
                         form_failed($form);
+                    }
                 },
-                error: function (result) {
-                    alert(Json.parse(result) + "function error");
-                    form_failed($form);
-                }
             });
         }
         else

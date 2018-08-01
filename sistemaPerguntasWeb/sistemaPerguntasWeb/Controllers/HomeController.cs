@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using sistemaPerguntasWeb.Models;
+using System.Web.Mvc;
 
 namespace sistemaPerguntasWeb.Controllers
 {
@@ -6,9 +7,10 @@ namespace sistemaPerguntasWeb.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(Etapas model)
         {
-            return View();
+            model.GetEtapas();
+            return View(model);
         }
         public ActionResult MinhasAulas()
         {

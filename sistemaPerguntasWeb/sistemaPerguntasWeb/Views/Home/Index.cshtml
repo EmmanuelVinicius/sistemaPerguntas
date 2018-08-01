@@ -1,4 +1,4 @@
-﻿
+﻿@model sistemaPerguntasWeb.Models.Etapas
 @{
     ViewBag.Title = "Index";
     ViewBag.Page = "Home";
@@ -8,7 +8,12 @@
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="row" id="main">
-            <div class="col-md-12 col-md-12 well text-center" id="content">
+            <div class="col-md-12 well text-center" id="content">
+                @foreach (var Nome in Model.GetEtapas())
+                {
+                    <a class="text-secondary imodal">
+                    </a>
+                }
                 <a class="text-secondary imodal"><h3>Welcome Admin!</h3></a>
                 <a class="text-secondary imodal"><h3>Welcome Admin!</h3></a>
                 <a class="list-group-item list-group-item-action list-group-item-info imodal">
@@ -23,11 +28,23 @@
             <div class="container-fluid">
                 <div class="row" id="main">
                     <div class="col-md-12 well" id="content">
-                        <div class="input-group mb-3 col-md-8">
-                            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <div class="input-group-append col-md-2">
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group stylish-input-group">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                        <span class="input-group-addon">
+                                            <button type="submit">
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <br />
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="http://www.planalto.gov.br/ccivil_03/leis/L9503Compilado.htm" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>

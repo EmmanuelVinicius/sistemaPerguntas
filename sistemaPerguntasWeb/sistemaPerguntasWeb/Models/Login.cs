@@ -1,6 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Text;
 using System.Web.Mvc;
 
 namespace sistemaPerguntasWeb.Models
@@ -31,6 +34,7 @@ namespace sistemaPerguntasWeb.Models
             string strConexao = ConfigurationManager.ConnectionStrings["iusConnectionString"].ConnectionString;
             SqlConnection banco = new SqlConnection(strConexao);
             SqlCommand ins = new SqlCommand();
+
             ins.CommandText = $"SELECT * FROM Escopos WHERE Escopo = '{Usuario}' AND IDEscopo = '{Senha}'";
             ins.Connection = banco;
             banco.Open();
