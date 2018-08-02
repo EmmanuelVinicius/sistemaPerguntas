@@ -28,6 +28,8 @@ create table AlunosEmEtapas
 (
 IDAluno int not null,
 IDEtapa int not null,
+Atual bit,
+Feita bit,
 constraint pk_AlunoEtapa primary key (IDAluno, IDEtapa),
 constraint fk_Aluno foreign key (IDAluno) references Alunos,
 constraint fk_Etapas foreign key (IDEtapa) references Etapas

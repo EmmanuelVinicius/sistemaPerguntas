@@ -11,4 +11,5 @@
         $(".modal-title").text($(this).text())
         $(".modal-body").text();
     });
+    $("#busca").quicksearch("html body p small font");
 })
