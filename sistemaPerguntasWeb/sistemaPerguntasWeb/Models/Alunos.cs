@@ -11,5 +11,6 @@ namespace sistemaPerguntasWeb.Models
         public string Telefone { get; set; }
         public string Endereco { get; set; }
         public int Idade { get; set; }
+        public Etapas Etapa { get; set; }
     }
 }

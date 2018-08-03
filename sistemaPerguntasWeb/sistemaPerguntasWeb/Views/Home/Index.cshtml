@@ -1,4 +1,4 @@
-﻿@model List<sistemaPerguntasWeb.Models.Etapas>
+﻿@model List<Etapas>
 @{
     ViewBag.Title = "Index";
     ViewBag.Page = "Home";
@@ -9,22 +9,23 @@
         <!-- Page Heading -->
         <div class="row" id="main">
             <div class="col-md-12 well text-center" id="content">
-                @foreach (var Nome in @Model)
+                @foreach (var ID in @Model)
                 {
-                    if (@Nome.Nome == "Região Centro-Oeste")
-                    {
-                        <a class="list-group-item list-group-item-action list-group-item-info imodal">
-                            <h1>@Nome.Nome</h1>
-                        </a>
-                    }
-                    else if (@Nome.Nome == "Região Sudeste" || @Nome.Nome == "Região Sul")
-                    {
-                        <a class="text-danger imodal"><h3>@Nome.Nome</h3></a>
-                    }
-                    else
-                    {
-                        <a class="text-secondary imodal"><h3>@Nome.Nome</h3></a>
-                    }
+                    <a class="text-danger imodal"><h3>@ID.Nome</h3></a>
+                    @*if (@ID.IDRegiaoPais == Convert.ToInt32(Request.QueryString["ID"].ToString()))
+            {
+                <a class="list-group-item list-group-item-action list-group-item-info imodal">
+                    <h1>@ID</h1>
+                </a>
+            }
+            else if (@ID.IDRegiaoPais < Convert.ToInt32(Request.QueryString["ID"].ToString()))
+            {
+                <a class="text-danger imodal"><h3>@ID.Nome</h3></a>
+            }
+            else
+            {
+                <a class="text-secondary imodal"><h3>@ID.Nome</h3></a>
+            }*@
                 }
             </div>
         </div>

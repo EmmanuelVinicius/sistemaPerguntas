@@ -20,7 +20,7 @@ namespace sistemaPerguntasWeb.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Login(Login model)
+		public JsonResult Login(Login model)
 		{
             if (model.Conex(model.Usuario, model.Senha))
             {
@@ -33,10 +33,11 @@ namespace sistemaPerguntasWeb.Controllers
                 var authManager = ctx.Authentication;
 
                 authManager.SignIn(identity);
-                return Redirect(GetRedirectUrl(model.ReturnUrl));
+                return Json("passou", JsonRequestBehavior.AllowGet);
+                //return Redirect(GetRedirectUrl(model.ReturnUrl));
 
             }
-                return Json("Invalido");
+                return Json("Invalido",JsonRequestBehavior.AllowGet);
         }
         private string GetRedirectUrl(string returnUrl)
         {
