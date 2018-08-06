@@ -1,39 +1,46 @@
+create database AutoEscola;
+use AutoEscola;
+drop database AutoEscola;
+
 create table Alunos
 (
 IDAluno int not null auto_increment,
-DataInscricao datetime not null,
+Etapa int not null,
 NomeCompleto varchar(50) not null,
-Telefone varchar(10),
+DataInscricao datetime not null,
+Telefone varchar(11),
 Endereco varchar(50),
+Email varchar(50),
 Idade int,
-AulasLegislacao int,
-AulasDirecao int,
-constraint pk_Alunos primary key(IDAluno)
+Sexo bit,
+constraint pk_Alunos primary key(IDAluno),
+constraint fk_Etapa foreign key(Etapa) references Etapas(IDEtapa)
 );
+
+create table Usuarios
+(
+IDAluno INT NOT NULL,
+Tipo varchar(20) not null,
+Email varchar(50) not null,
+Senha varchar(128) not null,
+constraint fk_Usuario foreign key(IDAluno) references Alunos(IDAluno)
+);
+alter table Alunos drop IDUsuario;
+
 create table Etapas
 (
 IDEtapa int not null AUTO_INCREMENT,
 Descricao varchar(50) not null,
 constraint pk_Etapas primary key(IDEtapa)
 );
-insert into Etapas values('Abrir a pauta');
-insert into Etapas values('Exame médico');
-insert into Etapas values('Aulas de Legislação');
-insert into Etapas values('Prova de Legislação');
-insert into Etapas values('Licensa de Aprendizagem');
-insert into Etapas values('Aulas de Direção');
-insert into Etapas values('Exame de Direção');
-
-create table AlunosEmEtapas
-(
-IDAluno int not null,
-IDEtapa int not null,
-Atual bit,
-Feita bit,
-constraint pk_AlunoEtapa primary key (IDAluno, IDEtapa),
-constraint fk_Aluno foreign key (IDAluno) references Alunos,
-constraint fk_Etapas foreign key (IDEtapa) references Etapas
-);
+insert into Etapas(Descricao) values('Abrir a pauta');
+insert into Etapas(Descricao) values('Exame médico');
+insert into Etapas(Descricao) values('Aulas de Legislação');
+insert into Etapas(Descricao) values('Prova de Legislação');
+insert into Etapas(Descricao) values('Licensa de Aprendizagem');
+insert into Etapas(Descricao) values('Aulas de Direção');
+insert into Etapas(Descricao) values('Exame de Direção');
+insert into Etapas(Descricao) values('Habilitado');
 
 create table AulasLegislacao
 (
@@ -46,24 +53,26 @@ create table AlunosEmLegislacao
 (
 IDAluno int not null,
 IDAulaLegislacao int not null,
+NumeroAulaLegislacao int not null,
+ComentarioLegislacao varchar(100),
+NotaAula int not null,
 constraint pk_AlunosEmLegislacao primary key(IDAluno,IDAulaLegislacao),
-constraint fk_Aluno foreign key (IDAluno) references Alunos,
-constraint fk_AulaLegislacao foreign key (IDAulaLegislacao) references AulasLegislacao
+constraint fk_AlunosEmLegislacao foreign key (IDAluno) references Alunos(IDAluno),
+constraint fk_AulaLegislacao foreign key (IDAulaLegislacao) references AulasLegislacao(IDAulaLegislacao)
 );
+
 
 create table Direcao
 (
-IDDirecao int not null AUTO_INCREMENT,
-Materia varchar(25) not null,
-DescricaoMateria(100) not null,
-Quantidade int not null,
-constraint pk_Direcao primary key (IDDirecao)
-);
-create table AlunosEmDirecao
-(
+NumeroAulaDirecao int not null AUTO_INCREMENT,
 IDAluno int not null,
-IDDirecao int not null,
-constraint pk_AlunosEmDirecao primary key (IDAluno, IDDirecao),
-constraint fk_Alunos foreign key (IDAluno) references Alunos,
-constraint fk_Direcao foreign key (IDDirecao) references Direcao
+ComentarioDirecao varchar(100),
+NotaAula int not null,
+constraint pk_Direcao primary key (NumeroAulaDirecao),
+constraint fk_Direcao foreign key (IDAluno) references Alunos(IDAluno)
 );
+
+SELECT A.IDAluno, A.NomeCompleto FROM Usuarios U INNER JOIN Alunos A ON U.IDAluno = A.IDAluno WHERE U.Email = 'adm@cfctriunfo.com.br' AND U.Senha = 'b8495e00b5b4b0ba3a1234d085f4c4ccdfaf06c75431b1b7ec747980e5255e9a4869481b857195325c07f9598586dc12e783d736dd45d8975b7d6a73cc125856';
+
+insert into Alunos values(1,1, 'Administrador','04/08/18','33814411', 'Rua Barao de monte alto', 'adm@cfctriunfo.com.br',19,1);
+insert into Usuarios values(1,'ADM','adm@cfctriunfo.com.br','b8495e00b5b4b0ba3a1234d085f4c4ccdfaf06c75431b1b7ec747980e5255e9a4869481b857195325c07f9598586dc12e783d736dd45d8975b7d6a73cc125856');

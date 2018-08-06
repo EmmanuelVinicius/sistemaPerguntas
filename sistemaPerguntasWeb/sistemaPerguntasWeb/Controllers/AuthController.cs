@@ -20,9 +20,9 @@ namespace sistemaPerguntasWeb.Controllers
 		}
 
 		[HttpPost]
-		public JsonResult Login(Login model)
+		public ActionResult Login(Login model)
 		{
-            if (model.Conex(model.Usuario, model.Senha))
+            if (model.Conex(model.Email, model.Senha))
             {
                 var identity = new ClaimsIdentity(new[]{
                     new Claim(ClaimTypes.Country, "Brasil")
@@ -33,8 +33,7 @@ namespace sistemaPerguntasWeb.Controllers
                 var authManager = ctx.Authentication;
 
                 authManager.SignIn(identity);
-                return Json("passou", JsonRequestBehavior.AllowGet);
-                //return Redirect(GetRedirectUrl(model.ReturnUrl));
+                return Redirect(GetRedirectUrl(model.ReturnUrl));
 
             }
                 return Json("Invalido",JsonRequestBehavior.AllowGet);

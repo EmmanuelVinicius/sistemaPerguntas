@@ -144,7 +144,7 @@
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
-                    Usuario: $('#lg_username').val(),
+                    Email: $('#lg_username').val(),
                     Senha: $('#lg_password').val()
                 }),
                 success: function (result) {
