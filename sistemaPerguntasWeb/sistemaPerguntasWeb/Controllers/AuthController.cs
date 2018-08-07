@@ -33,7 +33,7 @@ namespace sistemaPerguntasWeb.Controllers
                 var authManager = ctx.Authentication;
 
                 authManager.SignIn(identity);
-                return Redirect(GetRedirectUrl(model.ReturnUrl));
+                return Redirect(GetRedirectUrl(model.ReturnUrl) + "?IDAluno=" + model.ID);
 
             }
                 return Json("Invalido",JsonRequestBehavior.AllowGet);

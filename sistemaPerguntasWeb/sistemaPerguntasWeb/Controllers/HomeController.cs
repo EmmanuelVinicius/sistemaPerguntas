@@ -10,9 +10,8 @@ namespace sistemaPerguntasWeb.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int IDAluno)
         {
-			ViewBag.IdEtapa = IdEtapa;
             List<Etapas> etapas = new List<Etapas>();
             etapas.Add(new Etapas(1, "Inscrição"));
             etapas.Add(new Etapas(2, "Exame Médico"));

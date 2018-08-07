@@ -34,7 +34,7 @@
 
             // Cancel the normal submission.
             // If you don't want to use AJAX, remove this
-            return false;
+            return true;
         }
     });
 
