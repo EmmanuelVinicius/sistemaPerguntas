@@ -21,9 +21,9 @@ namespace sistemaPerguntasWeb.Controllers
 
 		[HttpPost]
 		public ActionResult Login(Login model)
-		{
+		{/*
             if (model.Conex(model.Email, model.Senha))
-            {
+            {*/
                 var identity = new ClaimsIdentity(new[]{
                     new Claim(ClaimTypes.Country, "Brasil")
                 },
@@ -35,8 +35,8 @@ namespace sistemaPerguntasWeb.Controllers
                 authManager.SignIn(identity);
                 return Redirect(GetRedirectUrl(model.ReturnUrl) + "?IDAluno=" + model.ID);
 
-            }
-                return Json("Invalido",JsonRequestBehavior.AllowGet);
+            /*}
+                return Json("Invalido",JsonRequestBehavior.AllowGet);*/
         }
         private string GetRedirectUrl(string returnUrl)
         {

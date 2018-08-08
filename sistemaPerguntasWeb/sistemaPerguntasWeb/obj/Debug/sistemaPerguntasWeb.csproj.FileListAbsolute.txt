@@ -456,3 +456,7 @@ C:\Users\manel\Desktop\GIT\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntas
 C:\Users\manel\Desktop\GIT\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\MySql.Data.dll
 C:\Users\manel\Desktop\GIT\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\Google.Protobuf.xml
 C:\Users\manel\Desktop\GIT\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\MySql.Data.xml
+C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\Google.Protobuf.dll
+C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\MySql.Data.dll
+C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\Google.Protobuf.xml
+C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\MySql.Data.xml

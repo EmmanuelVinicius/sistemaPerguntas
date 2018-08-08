@@ -52,25 +52,27 @@ namespace sistemaPerguntasWeb.Models
 			//try
 			//{
 
-				/*Conexão do trampo
+				/*Conexão do trampo*/
 				string strConexao = ConfigurationManager.ConnectionStrings["iusConnectionString"].ConnectionString;
 				SqlConnection banco = new SqlConnection(strConexao);
 				SqlCommand ins = new SqlCommand();
 
-				ins.CommandText = $"SELECT * FROM Escopos WHERE Escopo = '{Usuario}' AND IDEscopo = '{Senha}'";
+				ins.CommandText = $"SELECT * FROM aspnet_Membership WHERE Email = '{email}' AND PasswordFormat = '{senha}'";
 				ins.Connection = banco;
 				banco.Open();
 				var dr = ins.ExecuteReader();
-				bool TemLinhas = dr.HasRows;
+            while (dr.Read())
+                ID = int.Parse(dr["IsAproved"].ToString());
+            bool TemLinhas = dr.HasRows;
 				dr.Close();
 				banco.Close();
 				if (TemLinhas)
 					return true;
 				else
 					return false;
-				*/
+				
 
-				/*Conexão do barraco*/
+				/*Conexão do barraco
 				string strConexao = ConfigurationManager.ConnectionStrings["homeConnectionString"].ConnectionString;
 				MySqlConnection banco = new MySqlConnection(strConexao);
 				MySqlCommand ins = new MySqlCommand();
@@ -87,7 +89,7 @@ namespace sistemaPerguntasWeb.Models
 				if (TemLinhas)
 					return true;
 				else
-					return false;
+					return false;*/
 			//}
 			//catch (Exception ex)
 			//{

@@ -10,7 +10,7 @@ namespace sistemaPerguntasWeb.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index(int IDAluno)
+        public ActionResult Index()
         {
             List<Etapas> etapas = new List<Etapas>();
             etapas.Add(new Etapas(1, "Inscrição"));
@@ -26,10 +26,10 @@ namespace sistemaPerguntasWeb.Controllers
         public ActionResult MinhasAulas()
         {
 			List<Legislacao> model = new List<Legislacao>();
-			model.Add(new Legislacao(1, "Legislação", 15));
-			model.Add(new Legislacao(2, "Direção Defensiva", 15));
-			model.Add(new Legislacao(3, "Meio Ambiente", 9));
-			model.Add(new Legislacao(4, "Mecânica", 6));
+			model.Add(new Legislacao(1, 1, "Legislação", 15));
+			model.Add(new Legislacao(2, 1, "Direção Defensiva", 15));
+			model.Add(new Legislacao(3, 1, "Meio Ambiente", 9));
+			model.Add(new Legislacao(4, 1, "Mecânica", 6));
 			
             return View(model);
         }

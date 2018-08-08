@@ -1,40 +1,67 @@
-﻿@model sistemaPerguntasWeb.Models.Perguntas
+﻿@model List<Perguntas>
 @{
     ViewBag.Title = "Legislação";
     ViewBag.Page = "Quiz";
     Layout = "../Shared/_LayoutLogin.cshtml";
 }
-<!------ Include the above in your HEAD tag ---------->
-<div class="container-fluid bg-info">
-    <div class="modal-dialog">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><span class="label label-warning" id="qid">1</span> Resposta </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
             </div>
-            <div class="modal-body">
-                <div class="col-xs-3 col-xs-offset-5">
-                    <div id="loadbar" style="display: none;">
-                        <div class="blockG" id="rotateG_01"></div>
-                        <div class="blockG" id="rotateG_02"></div>
-                        <div class="blockG" id="rotateG_03"></div>
-                        <div class="blockG" id="rotateG_04"></div>
-                        <div class="blockG" id="rotateG_05"></div>
-                        <div class="blockG" id="rotateG_06"></div>
-                        <div class="blockG" id="rotateG_07"></div>
-                        <div class="blockG" id="rotateG_08"></div>
-                    </div>
-                </div>
-                <div class="quiz" id="quiz" data-toggle="buttons">
-                    @Html.Label("", new { @class= "element-animation1 btn btn-lg btn-primary btn-block" })
-                    <label class="element-animation1 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1"></label>
-                    <label class="element-animation2 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2"></label>
-                    <label class="element-animation3 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3"></label>
-                    <label class="element-animation4 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4"></label>
-                </div>
-            </div>
-            <div class="modal-footer text-muted">
-                <span id="answer"></span>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <input class="btn btn-success" type="button" value="Iniciar" id="btnIniciar" />
             </div>
         </div>
     </div>
+</div>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Prova de Legislação</h1>
+        <p>Uma pequena prova para treinar seus conhecimentos</p>
+    </div>
+
+    <h2>Instruções:</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis voluptatibus consequuntur ducimus, reprehenderit ullam aliquam nulla vitae laudantium assumenda tempore dolorem cupiditate numquam veritatis dicta eveniet hic quo rerum id?</p>
+    <p>I mean you can put everything on one line if you really want but don't do that.</p>
+    @using (Html.BeginForm("Perguntas", "Legislacao", FormMethod.Post))
+    {
+        int i = 1;
+        foreach (var pergunta in @Model)
+        {
+            <fieldset>
+                <div style="background:#fff;border:1px solid lightgray; border-radius:6px;padding:1em;">
+                    @*<form action="@Url.Action("Perguntas","Legislacao")" method="post">*@
+                    <div class="col-xl-12">
+                        <div class="funkyradio">
+                            <p>@i ) @pergunta.Corpo</p>
+                            <div class="funkyradio-default">
+                                <input type="radio" name="radio" id="radio1" value="a" />
+                                <label for="radio1">@pergunta.Opcao1</label>
+                            </div>
+                            <div class="funkyradio-default">
+                                <input type="radio" name="radio" id="radio2" value="b" />
+                                <label for="radio2">@pergunta.Opcao2</label>
+                            </div>
+                            <div class="funkyradio-default">
+                                <input type="radio" name="radio" id="radio3" value="c" />
+                                <label for="radio3">@pergunta.Opcao3</label>
+                            </div>
+                            <div class="funkyradio-default">
+                                <input type="radio" name="radio" id="radio4" value="d" />
+                                <label for="radio4">@pergunta.Opcao4</label>
+                            </div>
+                        </div>
+                    </div>
+                    @*</form>*@
+                </div>
+            </fieldset>
+            i++;
+        }
+    }
 </div>
