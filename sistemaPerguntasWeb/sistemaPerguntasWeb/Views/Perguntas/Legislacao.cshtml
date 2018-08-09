@@ -31,30 +31,42 @@
     <p>I mean you can put everything on one line if you really want but don't do that.</p>
     @using (Html.BeginForm("Perguntas", "Legislacao", FormMethod.Post))
     {
-        int i = 1;
+        int pri, seg, ter, qua, i = 1, j = 1;
         foreach (var pergunta in @Model)
         {
-            <fieldset>
+            pri = j;
+            seg = j + 1;
+            ter = j + 2;
+            qua = j + 3;
+            <fieldset id="field-@i">
                 <div style="background:#fff;border:1px solid lightgray; border-radius:6px;padding:1em;">
                     @*<form action="@Url.Action("Perguntas","Legislacao")" method="post">*@
                     <div class="col-xl-12">
                         <div class="funkyradio">
                             <p>@i ) @pergunta.Corpo</p>
                             <div class="funkyradio-default">
-                                <input type="radio" name="radio" id="radio1" value="a" />
-                                <label for="radio1">@pergunta.Opcao1</label>
+                                @Html.RadioButton("radio" + i, "a", false, new { @id = "radio" + pri })
+                                @Html.Label(pergunta.Opcao1, new { @for="radio" + pri })
+                                @*<input type="radio" name="radio-@i" id="radio-@pri" value="a" />
+                                <label for="radio-@pri">@pergunta.Opcao1</label>*@
                             </div>
                             <div class="funkyradio-default">
-                                <input type="radio" name="radio" id="radio2" value="b" />
-                                <label for="radio2">@pergunta.Opcao2</label>
+                                @Html.RadioButton("radio" + i, "b", false, new { @id = "radio" + seg })
+                                @Html.Label(pergunta.Opcao2, new { @for = "radio" + seg })
+                                @*<input type="radio" name="radio-@i" id="radio-@seg" value="b" />
+                                <label for="radio-@seg">@pergunta.Opcao2</label>*@
                             </div>
                             <div class="funkyradio-default">
-                                <input type="radio" name="radio" id="radio3" value="c" />
-                                <label for="radio3">@pergunta.Opcao3</label>
+                                @Html.RadioButton("radio" + i, "c", false, new { @id = "radio" + ter })
+                                @Html.Label(pergunta.Opcao3, new { @for = "radio" + ter })
+                                @*<input type="radio" name="radio-@i" id="radio-@ter" value="c" />
+                                <label for="radio-@ter">@pergunta.Opcao3</label>*@
                             </div>
                             <div class="funkyradio-default">
-                                <input type="radio" name="radio" id="radio4" value="d" />
-                                <label for="radio4">@pergunta.Opcao4</label>
+                                @Html.RadioButton("radio" + i, "d", false, new { @id = "radio" + qua })
+                                @Html.Label(pergunta.Opcao4, new { @for = "radio" + qua })
+                                @*<input type="radio" name="radio-@i" id="radio-@qua" value="d" />
+                                <label for="radio-@qua">@pergunta.Opcao4</label>*@
                             </div>
                         </div>
                     </div>
@@ -62,6 +74,8 @@
                 </div>
             </fieldset>
             i++;
+            j += 4;
         }
+            <button type="submit" class="btn btn-primary">Finalizar</button>
     }
 </div>

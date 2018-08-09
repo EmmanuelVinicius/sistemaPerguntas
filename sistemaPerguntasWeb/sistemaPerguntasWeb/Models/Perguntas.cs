@@ -7,7 +7,7 @@ namespace sistemaPerguntasWeb.Models
 {
     public class Perguntas
     {
-		public Perguntas(int _ID, string _corpo, string _opcao1, string _opcao2, string _opcao3, string _opcao4, char _certo)
+		public Perguntas(int _ID, string _corpo, string _opcao1, string _opcao2, string _opcao3, string _opcao4, string _certo)
         {
             ID = _ID;
             Corpo = _corpo;
@@ -23,6 +23,6 @@ namespace sistemaPerguntasWeb.Models
         public string Opcao2 { get; set; }
         public string Opcao3 { get; set; }
         public string Opcao4 { get; set; }
-        public char Certo { get; set; }
+        public string Certo { get; set; }
     }
 }
