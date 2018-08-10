@@ -180,3 +180,6 @@ button.bg-secondary:focus {
     border: 0;
     background: transparent;
 }
+.rounded-circle {
+    border-radius: 50% !important;
+}

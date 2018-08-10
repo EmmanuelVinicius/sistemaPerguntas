@@ -45,5 +45,9 @@ namespace sistemaPerguntasWeb.Controllers
         {
             return RedirectToAction("Legislacao", "Perguntas");
         }
+        public ActionResult Funcionarios()
+        {
+            return View();
+        }
     }
 }
