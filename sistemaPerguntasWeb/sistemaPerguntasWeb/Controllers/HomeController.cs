@@ -33,6 +33,12 @@ namespace sistemaPerguntasWeb.Controllers
 			
             return View(model);
         }
+        [HttpPost]
+        public ActionResult MinhasAulas(int[] vs)
+        {
+            vs = new int[vs.Length];
+            return View();
+        }
         public ActionResult ProgramacaoAulas()
         {
             return View();

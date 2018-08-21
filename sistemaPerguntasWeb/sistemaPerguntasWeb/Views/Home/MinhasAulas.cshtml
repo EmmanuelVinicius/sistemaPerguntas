@@ -1,8 +1,9 @@
-﻿@model List<Legislacao> 
+﻿@model List<Legislacao>
 @{
     ViewBag.Title = "MinhasAulas";
     ViewBag.Page = "Home";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    int condicao = 0;
 }
 <div id="page-wrapper">
     <div class="container-fluid">
@@ -11,20 +12,66 @@
             <div class="col-md-12 col-md-12 well text-center aulas" id="content">
                 <div class="list-group">
                     <h1>Minhas aulas de Legislação</h1>
-					@foreach (var item in @Model)
-					{
-	                    <a href="#" class="list-group-item list-group-item-action lista">@item.Descricao</a>
-					}
+                    <div id="accordion">
+                        @foreach (var item in @Model)
+                        {
+                            using (Html.BeginForm("MinhasAulas", "Home", FormMethod.Post))
+                            {
+                                <div class="card">
+                                    <div class="card-header" id="heading-@item.IDLegislacao">
+                                        <h5 class="mb-0">
+                                            <a href="#" class="list-group-item list-group-item-action lista" data-toggle="collapse" data-target="#collapse-@item.IDLegislacao" aria-expanded="true" aria-controls="collapse-@item.IDLegislacao">
+                                                @item.Descricao
+                                            </a>
+                                        </h5>
+                                    </div>
+
+                                    <div id="collapse-@item.IDLegislacao" class="collapse" aria-labelledby="heading-@item.IDLegislacao" data-parent="#accordion">
+                                        <div class="card-body list-group-item">
+                                            @for (int i = 1; i < item.QuantidadeAulas + 1; i++)
+                                            {
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="checkbox" name="check-@i" id="check-@i">
+                                                        </div>
+                                                    </div>
+                                                    <label class="input-group-text" for="check-@i">Aula @i</label>
+                                                    <input type="text" name="comentario-@i" class="form-control" placeholder="Comentário...">
+                                                </div><hr>
+                                            }
+                                            <button class="btn btn-success" type="submit">Salvar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
                 </div>
             </div>
         </div>
         <!-- /.row -->
+
+
+
         <div class="row">
             <div class="col-md-12 col-md-12 well text-center aulas" id="content">
                 <div class="list-group">
                     <h1>Minhas aulas de Direção</h1>
-
-                    <a href="#" class="list-group-item list-group-item-action lista"></a>
+                    <div class="container">
+                        @for (int i = 0; i < 7; i++)
+                        {
+                            <div class="row list-group-item list-group-item-action lista">
+                                @for (int j = 0; j < 3; j ++)
+                                {
+                                    <div class="col">
+                                        <input type="checkbox" name="aulas" value="@condicao" />Aula @condicao
+                                    </div>
+                                    condicao += 7;
+                                }
+                            </div>
+                            condicao = i + 1;
+                        }
                 </div>
             </div>
         </div>
