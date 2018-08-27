@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="~/Content/CSS_Home.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div id="throbber" style="display:none; min-height:120px;"></div>
+    <div id="noty-holder"></div>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">
+                    <img src="" alt="LOGO">
+                </a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="@Url.Action("logout", "auth")"><i class="fa fa-fw fa-power-off"></i> Sair </a>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="@Url.Action("index", "home")"><i class="fa fa-fw fa-home"></i> HOME </a>
+                    </li>
+                    <li>
+                        <a href="MinhasAulas"><i class="fa fa-fw fa-pencil-square"></i> MINHAS AULAS </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-list-ul"></i>  PROGRAMAÇÃO <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+                        <ul id="submenu-2" class="collapse">
+                            <li><a href="ProgramacaoAulas"><i class="fa fa-angle-right"></i> Aulas de Legislação</a></li>
+                            <li><a href="ProgramacaoDiversas"><i class="fa fa-angle-right"></i> Programações Diversas</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="Provinha"><i class="fa fa-fw fa fa-file-text"></i> PROVINHA </a>
+                    </li>
+                    <li>
+                        <a href="Funcionarios" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-users"></i> FUNCIONÁRIOS </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+                    </div>
+                    <div class="modal-body">
+                        Conteúdo interno do modal
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @RenderBody()
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+        <script src="~/Scripts/JS_Home.js"></script>
+
+</body>
+</html>

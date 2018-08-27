@@ -19,26 +19,24 @@ namespace sistemaPerguntasWeb.Controllers
             return View(perguntas);
         }
         [HttpPost]
-        public ActionResult Legislacao(List<Perguntas> model)
+        public ActionResult Legislacao(List<string> model)
         {
+            model = new List<string>();
+
             int pontos = 0;
-            model = new List<Perguntas>();
-            model.Add(new Perguntas(1, "Quantas aulas é necessário para fazer o exame de direção?", "10", "20", "30", "40", "b"));
-            model.Add(new Perguntas(2, "Quantas aulas é necessário para fazer a prova de legislação?", "15", "25", "35", "45", "d"));
+            List<Perguntas> perguntas = new List<Perguntas>();
+            perguntas.Add(new Perguntas(1, "Quantas aulas é necessário para fazer o exame de direção?", "10", "20", "30", "40", "b"));
+            perguntas.Add(new Perguntas(2, "Quantas aulas é necessário para fazer a prova de legislação?", "15", "25", "35", "45", "d"));
 
-            for (int i = 0; i < model.Count; i++)
+            for (int i = 1; i <= Request.Form.Count; i++)
             {
-                var botao = Request.Form["radio" + i];
-                if (botao == model[i].Certo)
-                {
+                model.Add(Request.Form["radio" + i].ToString());
+                string certa = perguntas[i - 1].Certo.ToString();
+                if (model.ToString() == certa)
                     pontos++;
-                }
             }
-            if (pontos > 20)
-            {
-
-            }
-            return View();
+            string resultado = (pontos > 1) ? "Parabéns" + pontos : "Desculpe" + pontos;
+            return Json(resultado);
         }
     }
 }

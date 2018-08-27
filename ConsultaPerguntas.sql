@@ -1,14 +1,20 @@
-create database [banco]
-use [banco]
+CREATE DATABASE [banco]
+USE [banco]
 
-create table Perguntas(
-ID int not null identity,
-Corpo varchar(100) not null,
-OpcaoA varchar(50) not null,
-OpcaoB varchar(50) not null,
-OpcaoC varchar(50) not null,
-OpcaoD varchar(50) not null,
-Certo char not null,
-Constraint pk_Perguntas primary key(ID)
+CREATE TABLE Perguntas(
+ID INT NOT NULL identity,
+Corpo VARCHAR(100) NOT NULL,
+OpcaoA VARCHAR(50) NOT NULL,
+OpcaoB VARCHAR(50) NOT NULL,
+OpcaoC VARCHAR(50) NOT NULL,
+OpcaoD VARCHAR(50) NOT NULL,
+CONSTRAINT pk_Perguntas PRIMARY KEY(ID)
 );
-select * from Perguntas
+
+CREATE TABLE RespostaDaPergunta
+(
+ID INT NOT NULL,
+Resposta VARCHAR(1) NOT NULL,
+CONSTRAINT PK_Resposta PRIMARY KEY(ID),
+CONSTRAINT FK_Resposta FOREIGN KEY(ID) REFERENCES Perguntas(ID)
+);

@@ -1,0 +1,32 @@
+﻿
+@{
+	ViewBag.Title = "ForgPass";
+    ViewBag.Page = "Login";
+	Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="text-center" style="padding:50px 0">
+	<div class="logo">Esqueci minha senha</div>
+	<div class="login-form-1">
+		<form id="forgot-password-form" class="text-left">
+			<div class="etc-login-form">
+				<p>Insira seu email de cadastro, lá você receberá instruções para a redefinição da sua senha.</p>
+			</div>
+			<div class="login-form-main-message"></div>
+			<div class="main-login-form">
+				<div class="login-group">
+					<div class="form-group">
+						<label for="fp_email" class="sr-only">Email</label>
+						<input type="text" class="form-control" id="fp_email" name="fp_email" placeholder="email">
+					</div>
+				</div>
+				<button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
+			</div>
+			<div class="etc-login-form">
+				<p>Já possui uma conta? <a href="/Auth/Login">Entre aqui</a></p>
+				<p>Novo por aqui? <a href="/Auth/Register">Crie uma conta</a></p>
+			</div>
+		</form>
+	</div>
+</div>
+
