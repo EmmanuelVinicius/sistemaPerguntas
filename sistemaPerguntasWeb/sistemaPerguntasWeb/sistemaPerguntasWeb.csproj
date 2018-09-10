@@ -160,6 +160,7 @@
     <Compile Include="Models\Legislacao.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Perguntas.cs" />
+    <Compile Include="Models\Programacoes.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -175,9 +176,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Home\MinhasAulas.cshtml" />
-    <Content Include="Views\Home\Direcao.cshtml" />
     <Content Include="Views\Home\ProgramacaoAulas.cshtml" />
     <Content Include="Views\Home\Funcionarios.cshtml" />
+    <Content Include="Views\Home\LegislacaoPartial.cshtml" />
+    <Content Include="Views\Home\DirecaoPartial.cshtml" />
+    <Content Include="Views\Home\ProgramacaoDiversas.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

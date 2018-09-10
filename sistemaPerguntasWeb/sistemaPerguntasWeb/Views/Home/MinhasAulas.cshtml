@@ -1,4 +1,4 @@
-﻿@model List<Legislacao> 
+﻿@model List<Legislacao>
 @{
     ViewBag.Title = "MinhasAulas";
     ViewBag.Page = "Home";
@@ -11,10 +11,7 @@
             <div class="col-md-12 col-md-12 well text-center aulas" id="content">
                 <div class="list-group">
                     <h1>Minhas aulas de Legislação</h1>
-					@foreach (var item in @Model)
-					{
-	                    <a href="#" class="list-group-item list-group-item-action lista">@item.Descricao</a>
-					}
+                    @Html.Partial("LegislacaoPartial")
                 </div>
             </div>
         </div>
@@ -23,13 +20,10 @@
             <div class="col-md-12 col-md-12 well text-center aulas" id="content">
                 <div class="list-group">
                     <h1>Minhas aulas de Direção</h1>
-
-                    <a href="#" class="list-group-item list-group-item-action lista"></a>
+                    @Html.Partial("DirecaoPartial")
                 </div>
             </div>
         </div>
-
-        <!-- /.container-fluid -->
     </div>
-    <!-- /#page-wrapper -->
-</div><!-- /#wrapper -->
+</div>
+

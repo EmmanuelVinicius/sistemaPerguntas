@@ -17,7 +17,7 @@ namespace sistemaPerguntasWeb.Controllers
             etapas.Add(new Etapas(2, "Exame Médico"));
             etapas.Add(new Etapas(3, "Aulas de Legislação"));
             etapas.Add(new Etapas(4, "Prova de Legislação"));
-			etapas.Add(new Etapas(5, "Licensa de Aprendizagem"));
+            etapas.Add(new Etapas(5, "Licensa de Aprendizagem"));
             etapas.Add(new Etapas(6, "Aulas de Direção"));
             etapas.Add(new Etapas(7, "Exame de Rua"));
             etapas.Add(new Etapas(8, "Habilitado"));
@@ -25,21 +25,45 @@ namespace sistemaPerguntasWeb.Controllers
         }
         public ActionResult MinhasAulas()
         {
-			List<Legislacao> model = new List<Legislacao>();
-			model.Add(new Legislacao(1, 1, "Legislação", 15));
-			model.Add(new Legislacao(2, 1, "Direção Defensiva", 15));
-			model.Add(new Legislacao(3, 1, "Meio Ambiente", 9));
-			model.Add(new Legislacao(4, 1, "Mecânica", 6));
-			
+            List<Legislacao> model = new List<Legislacao>();
+            model.Add(new Legislacao(1, 1, "Legislação", 15));
+            model.Add(new Legislacao(2, 1, "Direção Defensiva", 15));
+            model.Add(new Legislacao(3, 1, "Meio Ambiente", 9));
+            model.Add(new Legislacao(4, 1, "Mecânica", 6));
             return View(model);
+        }
+        public PartialViewResult LegislacaoPartial()
+        {
+            List<Legislacao> model = new List<Legislacao>();
+            model.Add(new Legislacao(1, 1, "Legislação", 15));
+            model.Add(new Legislacao(2, 1, "Direção Defensiva", 15));
+            model.Add(new Legislacao(3, 1, "Meio Ambiente", 9));
+            model.Add(new Legislacao(4, 1, "Mecânica", 6));
+            return PartialView(model);
+        }
+        public PartialViewResult DirecaoPartial()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public PartialViewResult DirecaoPartial(int[] vs)
+        {
+            vs = new int[Request.Form.Count];
+            for (int i = 0; i < vs.Length; i++)
+            {
+                vs[i] = Request.Form["aulas"][i];
+            }
+            return PartialView();
         }
         public ActionResult ProgramacaoAulas()
         {
             return View();
         }
-        public ActionResult Direcao()
+        public ActionResult ProgramacaoDiversas()
         {
-            return View();
+            List<Programacoes> model = new List<Programacoes>();
+            model.Add(new Programacoes("Arroz, batata e cenoura!"));
+            return View(model);
         }
         public RedirectToRouteResult Provinha()
         {
