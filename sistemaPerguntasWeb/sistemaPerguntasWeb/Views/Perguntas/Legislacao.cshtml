@@ -8,9 +8,6 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
                 <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
             </div>
             <div class="modal-body"></div>
@@ -21,17 +18,9 @@
     </div>
 </div>
 <div class="container">
-    <div class="jumbotron">
-        <h1>Prova de Legislação</h1>
-        <p>Uma pequena prova para treinar seus conhecimentos</p>
-    </div>
-
-    <h2>Instruções:</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis voluptatibus consequuntur ducimus, reprehenderit ullam aliquam nulla vitae laudantium assumenda tempore dolorem cupiditate numquam veritatis dicta eveniet hic quo rerum id?</p>
-    <p>I mean you can put everything on one line if you really want but don't do that.</p>
     @using (Html.BeginForm("Legislacao", "Perguntas", FormMethod.Post))
     {
-        int pri, seg, ter, qua, i = 0, j = 0;
+        int pri, seg, ter, qua, i = 1, j = 0;
         foreach (var pergunta in @Model)
         {
             pri = j;
@@ -74,6 +63,7 @@
             i++;
             j += 4;
         }
+        <h2 id="sessao" class="pull-right"></h2>
         <button type="submit" class="btn btn-primary">Finalizar</button>
     }
 </div>

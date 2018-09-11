@@ -138,7 +138,6 @@
   <ItemGroup>
     <Content Include="Content\CSS_Home.css" />
     <Content Include="Content\CSS_Main.css" />
-    <Content Include="Content\CSS_Quiz.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\JS_Home.js" />
     <Content Include="Scripts\JS_Main.js" />
