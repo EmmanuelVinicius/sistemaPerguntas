@@ -12,7 +12,7 @@ $(document).ready(function () {
     $("#btnIniciar").click(function () {
         $(this).attr("data-dismiss", "modal")
         var tempo = new Number();
-        tempo = 3600;
+        tempo = 3599;
         setInterval(function startCountdown() {
 
             if ((tempo - 1) >= 0) {

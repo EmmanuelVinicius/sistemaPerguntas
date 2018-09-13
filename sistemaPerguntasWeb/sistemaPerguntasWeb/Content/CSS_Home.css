@@ -75,8 +75,15 @@
     .navbar-fixed-top {
         position: relative;
     }
-}
+    .navbar-header .logo{
+        width:100%;
 
+    }
+
+}
+.logo{
+    width:225px;
+}
 @media(min-width:768px) {
 
     .side-nav {

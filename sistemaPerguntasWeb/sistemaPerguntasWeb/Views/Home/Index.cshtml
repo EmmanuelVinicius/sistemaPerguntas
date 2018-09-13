@@ -7,7 +7,6 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <!-- Page Heading -->
-        <div class="row" id="main">
             <div class="col-md-12 well text-center" id="content">
                 @foreach (var ID in @Model)
                 {
@@ -31,18 +30,13 @@
         <!-- /.row -->
         <div id="page-wrapper">
             <div class="container-fluid">
-                <div class="row" id="main">
                     <div class="col-md-12 well" id="content">
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <div class="input-group stylish-input-group">
-                                        <input type="text" id="busca" class="form-control" placeholder="Search">
-                                        <span class="input-group-addon">
-                                            <button type="submit">
-                                                <span class="glyphicon glyphicon-search"></span>
-                                            </button>
-                                        </span>
+                                    <div class="form-group input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
+                                        <input name="consulta" id="consulta" placeholder="Consultar" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>

@@ -14,8 +14,8 @@
     //$("#busca").quicksearch("html body p small font");
     $("#consulta").on('keyup', function () {
         var value = $(this).val().toLowerCase();
-        $("table tbody tr td").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $("table tbody tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         });
     });/*
     $("#myInput").on("keyup", function () {
