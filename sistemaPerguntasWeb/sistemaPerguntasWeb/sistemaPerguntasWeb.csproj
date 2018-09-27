@@ -143,7 +143,9 @@
     <Content Include="Scripts\JS_Home.js" />
     <Content Include="Scripts\JS_Main.js" />
     <Content Include="Scripts\JS_Quiz.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -181,6 +183,7 @@
     <Content Include="Views\Home\LegislacaoPartial.cshtml" />
     <Content Include="Views\Home\DirecaoPartial.cshtml" />
     <Content Include="Views\Home\ProgramacaoDiversas.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

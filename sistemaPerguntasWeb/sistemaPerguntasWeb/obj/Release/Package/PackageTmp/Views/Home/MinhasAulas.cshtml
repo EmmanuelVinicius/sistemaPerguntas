@@ -1,0 +1,29 @@
+﻿@model List<Legislacao>
+@{
+    ViewBag.Title = "MinhasAulas";
+    ViewBag.Page = "Home";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row" id="main">
+            <div class="col-md-12 col-md-12 well text-center aulas" id="content">
+                <div class="list-group">
+                    <h1>Minhas aulas de Legislação</h1>
+                    @Html.Partial("LegislacaoPartial")
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-md-12 col-md-12 well text-center aulas" id="content">
+                <div class="list-group">
+                    <h1>Minhas aulas de Direção</h1>
+                    @Html.Partial("DirecaoPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

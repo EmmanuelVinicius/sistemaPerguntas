@@ -49,10 +49,11 @@ namespace sistemaPerguntasWeb.Models
 		}
 		private bool Banco(string email, string senha)
 		{
+            return true;
 			//try
 			//{
 
-				/*Conexão do trampo*/
+				/*Conexão do trampo
 				string strConexao = ConfigurationManager.ConnectionStrings["iusConnectionString"].ConnectionString;
 				SqlConnection banco = new SqlConnection(strConexao);
 				SqlCommand ins = new SqlCommand();
@@ -69,7 +70,7 @@ namespace sistemaPerguntasWeb.Models
 				if (TemLinhas)
 					return true;
 				else
-					return false;
+					return false;*/
 				
 
 				/*Conexão do barraco

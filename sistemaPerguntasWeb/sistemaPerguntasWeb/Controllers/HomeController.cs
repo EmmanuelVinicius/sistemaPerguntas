@@ -12,6 +12,8 @@ namespace sistemaPerguntasWeb.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            /*Etapas etapas = new Etapas();
+            return View(etapas.GetEtapas());*/
             List<Etapas> etapas = new List<Etapas>();
             etapas.Add(new Etapas(1, "Inscrição"));
             etapas.Add(new Etapas(2, "Exame Médico"));

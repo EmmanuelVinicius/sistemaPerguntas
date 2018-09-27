@@ -38,6 +38,67 @@
         }
     });
 
+    /**/
+
+    // Loading
+    //----------------------------------------------
+    function remove_loading($form) {
+        $form.find('[type=submit]').removeClass('error success');
+        $form.find('.login-form-main-message').removeClass('show error success').html('');
+    }
+
+    function form_loading($form) {
+        $form.find('[type=submit]').addClass('clicked').html(options['btn-loading']);
+    }
+
+    function form_success($form) {
+        $form.find('[type=submit]').addClass('success').html(options['btn-success']);
+        $form.find('.login-form-main-message').addClass('show success').html(options['msg-success']);
+    }
+
+    function form_failed($form) {
+        $form.find('[type=submit]').addClass('error').html(options['btn-error']);
+        $form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);
+    }
+
+    // Dummy Submit Form (Remove this)
+    //----------------------------------------------
+    // This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
+    function submit_form($form) {
+        if ($form.valid()) {
+            form_loading($form);
+
+            $.ajax({
+                url: "/Auth/Login",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    Email: $('#lg_username').val(),
+                    Senha: $('#lg_password').val()
+                }),
+                success: function (result) {
+                    if (result == 'Invalido') {
+                        form_failed($form);
+                        alert(result + ", invalido")
+                    }
+                    else
+                        alert(result + ", valido")
+                },
+            });
+            alert($form + ", $form.valid()")
+        }
+        else {
+            form_failed($form);
+            alert($form + ", $form.invalid()")
+        }
+    }
+})(jQuery);
+
+
+
+
+/*
     // Register Form
     //----------------------------------------------
     // Validation
@@ -109,52 +170,4 @@
             return false;
         }
     });
-
-    // Loading
-    //----------------------------------------------
-    function remove_loading($form) {
-        $form.find('[type=submit]').removeClass('error success');
-        $form.find('.login-form-main-message').removeClass('show error success').html('');
-    }
-
-    function form_loading($form) {
-        $form.find('[type=submit]').addClass('clicked').html(options['btn-loading']);
-    }
-
-    function form_success($form) {
-        $form.find('[type=submit]').addClass('success').html(options['btn-success']);
-        $form.find('.login-form-main-message').addClass('show success').html(options['msg-success']);
-    }
-
-    function form_failed($form) {
-        $form.find('[type=submit]').addClass('error').html(options['btn-error']);
-        $form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);
-    }
-
-    // Dummy Submit Form (Remove this)
-    //----------------------------------------------
-    // This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
-    function submit_form($form) {
-        if ($form.valid()) {
-            form_loading($form);
-            
-            $.ajax({
-                url: "/Auth/Login",
-                type: "POST",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({
-                    Email: $('#lg_username').val(),
-                    Senha: $('#lg_password').val()
-                }),
-                success: function (result) {
-                    if (result == 'Invalido') {
-                        form_failed($form);
-                    }
-                },
-            });
-        }
-        else
-            return false;
-    }
-})(jQuery); 
+ */

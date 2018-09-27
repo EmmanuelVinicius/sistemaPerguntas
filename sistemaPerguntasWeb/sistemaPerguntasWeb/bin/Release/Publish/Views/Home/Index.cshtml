@@ -1,0 +1,55 @@
+﻿@model List<Etapas>
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Page = "Home";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <!-- Page Heading -->
+            <div class="col-md-12 well text-center" id="content">
+                @foreach (var ID in @Model)
+                {
+                    if (@ID.IDRegiaoPais == Convert.ToInt32(Request.QueryString["IDAluno"].ToString()))
+                    {
+                        <a class="list-group-item list-group-item-action list-group-item-info imodal">
+                            <h1>@ID.Nome</h1>
+                        </a>
+                    }
+                    else if (@ID.IDRegiaoPais > Convert.ToInt32(Request.QueryString["IDAluno"].ToString()))
+                    {
+                        <a class="text-danger imodal"><h3>@ID.Nome</h3></a>
+                    }
+                    else
+                    {
+                        <a class="text-secondary imodal"><h3>@ID.Nome</h3></a>
+                    }
+                }
+            </div>
+        </div>
+        <!-- /.row -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                    <div class="col-md-12 well" id="content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group input-group">
+                                        <span class="input-group-text" id="basic-addon1"><i class="glyphicon glyphicon-search"></i></span>
+                                        <input name="consulta" id="consulta" placeholder="Consultar" type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="http://www.planalto.gov.br/ccivil_03/leis/L9503Compilado.htm" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+</div><!-- /#wrapper -->
