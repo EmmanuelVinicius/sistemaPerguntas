@@ -78,19 +78,19 @@
                     Senha: $('#lg_password').val()
                 }),
                 success: function (result) {
-                    if (result == 'Invalido') {
+                    if (JSON.parse(result) == 'Invalido') {
                         form_failed($form);
-                        alert(result + ", invalido")
+                        alert(JSON.parse(result) + ", invalido")
                     }
                     else
-                        alert(result + ", valido")
+                        alert(JSON.parse(result) + ", valido")
                 },
             });
-            alert($form + ", $form.valid()")
+            alert(JSON.parse($form) + ", $form.valid()")
         }
         else {
             form_failed($form);
-            alert($form + ", $form.invalid()")
+            alert(JSON.parse($form) + ", $form.invalid()")
         }
     }
 })(jQuery);

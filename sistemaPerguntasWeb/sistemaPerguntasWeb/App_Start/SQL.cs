@@ -312,7 +312,7 @@ namespace sistemaPerguntasWeb.App_Start
                 cnn.Close();
             }
         }
-
+        
         public static DataSet GetDataSet(string strQuery)
         {
             SqlConnection MyConnection = new SqlConnection(conexao);
@@ -488,7 +488,7 @@ namespace sistemaPerguntasWeb.App_Start
             {
                 MyConnection.Close();
             }
-        }
+        }   
     }
 
 }

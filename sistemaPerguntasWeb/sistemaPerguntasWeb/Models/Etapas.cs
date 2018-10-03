@@ -8,13 +8,13 @@ namespace sistemaPerguntasWeb.Models
     {
         public int IDRegiaoPais { get; set; }
         public string Nome { get; set; }
-
+ /*
         public Etapas(int _IDRegiaoPais, string _Nome)
         {
             IDRegiaoPais = _IDRegiaoPais;
             Nome = _Nome;
         }
-        /*public int IDEtapa { get; set; }
+       public int IDEtapa { get; set; }
         public string Descricao { get; set; }
 
         public List<Etapas> GetEtapas()

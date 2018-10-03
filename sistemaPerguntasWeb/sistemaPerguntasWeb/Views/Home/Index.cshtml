@@ -10,13 +10,13 @@
             <div class="col-md-12 well text-center" id="content">
                 @foreach (var ID in @Model)
                 {
-                    if (@ID.IDRegiaoPais == Convert.ToInt32(Request.QueryString["IDAluno"].ToString()))
+                    if (ViewBag.ID == @ID.IDRegiaoPais)
                     {
                         <a class="list-group-item list-group-item-action list-group-item-info imodal">
                             <h1>@ID.Nome</h1>
                         </a>
                     }
-                    else if (@ID.IDRegiaoPais > Convert.ToInt32(Request.QueryString["IDAluno"].ToString()))
+                    else if (ViewBag.ID < @ID.IDRegiaoPais)
                     {
                         <a class="text-danger imodal"><h3>@ID.Nome</h3></a>
                     }
