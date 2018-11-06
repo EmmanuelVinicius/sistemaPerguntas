@@ -1,18 +1,21 @@
 ﻿@{int ListagemDirecao = 0; }
 
-            <div class="container">
-                @for (int i = 0; i < 7; i++)
+<div class="container">
+    @using (Html.BeginForm("DirecaoPartial", "Home", FormMethod.Post, new { @id = "form-direcao" }))
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            <div class="row list-group-item list-group-item-action lista">
+                @for (int j = 0; j < 3; j++)
                 {
-                    <div class="row list-group-item list-group-item-action lista">
-                        @for (int j = 0; j < 3; j++)
-                        {
-                            <div class="col">
-                                <input type="checkbox" name="aulas-@ListagemDirecao" value="@ListagemDirecao" />Aula @ListagemDirecao
-                            </div>
-                            ListagemDirecao += 7;
-                        }
+                    <div class="col">
+                        <input type="checkbox"  name="aulas" value="@ListagemDirecao" />Aula @ListagemDirecao
                     </div>
-                    ListagemDirecao = i + 1;
+                    ListagemDirecao += 7;
                 }
             </div>
-        
+            ListagemDirecao = i + 1;
+        }
+        <button type="submit" class="btn btn-success">Salvar</button>
+    }
+</div>

@@ -408,3 +408,11 @@ button.bg-secondary:focus {
 .font-italic {
     font-style: italic !important;
 }
+.loading {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    transform: scale(1.1, 1.1);
+    content: "<i class='fa fa-spinner fa-pulse'></i>";
+    display: none;
+}

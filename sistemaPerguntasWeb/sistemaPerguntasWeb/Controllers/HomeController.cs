@@ -14,6 +14,7 @@ namespace sistemaPerguntasWeb.Controllers
     //[Authorize(Roles = "")]
     public class HomeController : Controller
     {
+        List<int> direcao = new List<int>();
         // GET: Home
         public ActionResult Index()
         {
@@ -41,38 +42,44 @@ namespace sistemaPerguntasWeb.Controllers
         public ActionResult MinhasAulas()
         {
             List<Legislacao> model = new List<Legislacao>();
-            var comando = SQL.ExecuteReader("SELECT * FROM Legislacao");
-            int cont = 0;
-            while (comando.HasRows)
-            {
-                model[cont].Descricao = comando["Descricao"].ToString();
-                cont++;
-            }
-
-            return View(model);
-        }
-        public PartialViewResult LegislacaoPartial()
-        {
-            List<Legislacao> model = new List<Legislacao>();
             model.Add(new Legislacao(1, 1, "Legislação", 15));
             model.Add(new Legislacao(2, 1, "Direção Defensiva", 15));
             model.Add(new Legislacao(3, 1, "Meio Ambiente", 9));
             model.Add(new Legislacao(4, 1, "Mecânica", 6));
-            return PartialView(model);
+            /*
+                var comando = SQL.ExecuteReader("SELECT * FROM Legislacao");
+                int cont = 0;
+                while (comando.HasRows)
+                {
+                    model[cont].Descricao = comando["Descricao"].ToString();
+                    cont++ ;
+                }
+                */
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult LegislacaoPartial(int[] selecoes)
+        {
+            selecoes = new int[Request.Form.Count];
+            for (int i = 0; i < selecoes.Length; i++)
+            {
+                selecoes[i] = Request.Form["aulas"][i];
+            }
+            return RedirectToAction("MinhasAulas");
         }
         public PartialViewResult DirecaoPartial()
         {
             return PartialView();
         }
         [HttpPost]
-        public PartialViewResult DirecaoPartial(int[] vs)
+        public ActionResult DirecaoPartial(int[] caixasMarcadas)
         {
-            vs = new int[Request.Form.Count];
-            for (int i = 0; i < vs.Length; i++)
+            caixasMarcadas = new int[Request.Form.Count];
+            for (int i = 0; i < caixasMarcadas.Length; i++)
             {
-                vs[i] = Request.Form["aulas"][i];
+                caixasMarcadas[i] = Request.Form["aulas"][i];
             }
-            return PartialView();
+            return RedirectToAction("MinhasAulas");
         }
         public ActionResult ProgramacaoAulas()
         {
