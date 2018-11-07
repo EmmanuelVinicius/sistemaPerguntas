@@ -58,12 +58,15 @@ namespace sistemaPerguntasWeb.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult LegislacaoPartial(int[] selecoes)
+        public ActionResult LegislacaoPartial(string[] caixasMarcadas, string[] comentarios)
         {
-            selecoes = new int[Request.Form.Count];
-            for (int i = 0; i < selecoes.Length; i++)
+            int condicao = Request.Form.Count;
+            caixasMarcadas = new string[condicao];
+            comentarios = new string[condicao];
+            for (int i = 0; i < condicao; i++)
             {
-                selecoes[i] = Request.Form["aulas"][i];
+                caixasMarcadas[i] = Request.Form["check-" + (i + 1)];
+                comentarios[i] = Request.Form["comentario-" + (i + 1)];
             }
             return RedirectToAction("MinhasAulas");
         }
