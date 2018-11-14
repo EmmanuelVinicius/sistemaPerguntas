@@ -91,12 +91,12 @@ namespace sistemaPerguntasWeb.Models
 					return true;
 				else
 					return false;*/
-            /*}
+            }
             catch (Exception ex)
             {
 
                 throw ex;
-            }*/
+            }
         }
 
 	}
