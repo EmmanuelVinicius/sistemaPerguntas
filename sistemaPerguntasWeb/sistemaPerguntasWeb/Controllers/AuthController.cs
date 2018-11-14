@@ -8,8 +8,6 @@ namespace sistemaPerguntasWeb.Controllers
     [AllowAnonymous]
 	public class AuthController : Controller
 	{
-		// GET: Auth
-        [HttpGet]
 		public ActionResult Login(string returnUrl)
 		{
             var model = new Login
@@ -19,8 +17,7 @@ namespace sistemaPerguntasWeb.Controllers
 			return View(model);
 		}
 
-		[HttpPost]
-		public ActionResult Login(Login model)
+		public ActionResult Ajax(Login model)
 		{
             if (model.Conex(model.Email, model.Senha))
             {
@@ -33,10 +30,10 @@ namespace sistemaPerguntasWeb.Controllers
                 var authManager = ctx.Authentication;
 
                 authManager.SignIn(identity);
-                return Redirect(GetRedirectUrl(model.ReturnUrl) + "?IDAluno=" + model.ID);
+                return Json(Redirect(GetRedirectUrl(model.ReturnUrl) + "?IDAluno=" + model.ID),JsonRequestBehavior.AllowGet);
 
             }
-                return Json("Invalido",JsonRequestBehavior.AllowGet);
+                return Json("Invalido");
         }
         private string GetRedirectUrl(string returnUrl)
         {
@@ -54,17 +51,7 @@ namespace sistemaPerguntasWeb.Controllers
             authManager.SignOut("ApplicationCookie");
             return RedirectToAction("index", "home");
         }
-        [HttpPost]
-		public ActionResult Register(Users model)
-        {
-            if (!ModelState.IsValid)
-            {
-                ModelState.AddModelError("", "Digite os dados corretamente");
-                return View();
-            }
-            Users users = new Users();
-			return Redirect("");
-		}
+
 		public ActionResult ForgPass()
 		{
 			return View();

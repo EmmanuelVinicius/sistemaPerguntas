@@ -21,7 +21,7 @@ namespace sistemaPerguntasWeb.Models
 		{
 			Email = email;
 			Senha = pass;
-			if (Banco(email, Criptografa(Senha)))
+			if (Banco(email, /*Criptografa(*/pass/*)*/))
 				return true;
 			else
 				return false;
@@ -50,31 +50,30 @@ namespace sistemaPerguntasWeb.Models
 		}
 		private bool Banco(string email, string senha)
 		{
-            return true;
-			//try
-			//{
+            try
+            {
 
-				/*Conexão do trampo
-				string strConexao = ConfigurationManager.ConnectionStrings["iusConnectionString"].ConnectionString;
+            /*Conexão do trampo*/
+                string strConexao = ConfigurationManager.ConnectionStrings["iusConnectionString"].ConnectionString;
 				SqlConnection banco = new SqlConnection(strConexao);
 				SqlCommand ins = new SqlCommand();
 
-				ins.CommandText = $"SELECT * FROM aspnet_Membership WHERE Email = '{email}' AND PasswordFormat = '{senha}'";
+				ins.CommandText = $"SELECT * FROM aspnet_Membership WHERE Email = '{email}' AND PasswordQuestion = '{senha}'";
 				ins.Connection = banco;
 				banco.Open();
 				var dr = ins.ExecuteReader();
-            while (dr.Read())
-                ID = int.Parse(dr["IsAproved"].ToString());
+            //while (dr.Read())
+            //    ID = int.Parse(dr["IsApproved"].ToString());
             bool TemLinhas = dr.HasRows;
 				dr.Close();
 				banco.Close();
 				if (TemLinhas)
 					return true;
 				else
-					return false;*/
-				
+					return false;
 
-				/*Conexão do barraco
+
+                /*Conexão do barraco
 				string strConexao = ConfigurationManager.ConnectionStrings["homeConnectionString"].ConnectionString;
 				MySqlConnection banco = new MySqlConnection(strConexao);
 				MySqlCommand ins = new MySqlCommand();
@@ -92,13 +91,13 @@ namespace sistemaPerguntasWeb.Models
 					return true;
 				else
 					return false;*/
-			//}
-			//catch (Exception ex)
-			//{
+            /*}
+            catch (Exception ex)
+            {
 
-			//	throw ex;
-			//}
-		}
+                throw ex;
+            }*/
+        }
 
 	}
 }
