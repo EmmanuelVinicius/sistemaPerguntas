@@ -1,6 +1,5 @@
 ﻿@{int ListagemDirecao = 0; }
 
-<div class="container">
     @using (Html.BeginForm("DirecaoPartial", "Home", FormMethod.Post, new { @id = "form-direcao" }))
     {
         for (int i = 0; i < 7; i++)
@@ -16,6 +15,6 @@
             </div>
             ListagemDirecao = i + 1;
         }
+        <hr />
         <button type="submit" class="btn btn-success">Salvar</button>
     }
-</div>
