@@ -14,7 +14,6 @@ namespace sistemaPerguntasWeb.Controllers
     //[Authorize(Roles = "")]
     public class HomeController : Controller
     {
-        List<int> direcao = new List<int>();
         // GET: Home
         public ActionResult Index()
         {
