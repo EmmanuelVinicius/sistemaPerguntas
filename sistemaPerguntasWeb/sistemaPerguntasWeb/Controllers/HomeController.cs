@@ -38,13 +38,16 @@ namespace sistemaPerguntasWeb.Controllers
             ViewBag.ID = 4/*SQL.ExecuteScalar(dsAluno.ToString(), CommandType.Text, parametros)*/;
             return View(etapas);
         }
-        public ActionResult MinhasAulas()
+        public ActionResult MinhasAulas(string IDAluno)
         {
             List<Legislacao> model = new List<Legislacao>();
             model.Add(new Legislacao(1, 1, "Legislação", 15));
             model.Add(new Legislacao(2, 1, "Direção Defensiva", 15));
             model.Add(new Legislacao(3, 1, "Meio Ambiente", 9));
             model.Add(new Legislacao(4, 1, "Mecânica", 6));
+
+            IDAluno = Request.QueryString["IDAluno"].ToString();
+
             /*
                 var comando = SQL.ExecuteReader("SELECT * FROM Legislacao");
                 int cont = 0;

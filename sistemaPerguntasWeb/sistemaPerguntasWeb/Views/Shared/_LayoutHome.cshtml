@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    Login login = new Login();
+    int IDAluno = login.ID;
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -41,23 +45,23 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="@Url.Action("index","home")"><i class="fa fa-fw fa-home"></i> HOME </a>
+                        <a href="@Url.Action("Index","Home", new {IDAluno})"><i class="fa fa-fw fa-home"></i> HOME </a>
                     </li>
                     <li>
-                        <a href="minhasAulas"><i class="fa fa-fw fa-pencil-square"></i> MINHAS AULAS </a>
+                        <a href="@Url.Action("MinhasAulas", "Home", new {IDAluno})"><i class="fa fa-fw fa-pencil-square"></i> MINHAS AULAS </a>
                     </li>
                     <li>
                         <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-list-ul"></i>  PROGRAMAÇÃO <i class="fa fa-fw fa-angle-down pull-right"></i></a>
                         <ul id="submenu-2" class="collapse">
-                            <li><a href="programacaoAulas"><i class="fa fa-angle-right"></i> Aulas de Legislação</a></li>
-                            <li><a href="programacaoDiversas"><i class="fa fa-angle-right"></i> Programações Diversas</a></li>
+                            <li><a href="ProgramacaoAulas"><i class="fa fa-angle-right"></i> Aulas de Legislação</a></li>
+                            <li><a href="ProgramacaoDiversas"><i class="fa fa-angle-right"></i> Programações Diversas</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="provinha"><i class="fa fa-fw fa fa-file-text"></i> PROVINHA </a>
+                        <a href="Provinha"><i class="fa fa-fw fa fa-file-text"></i> PROVINHA </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("funcionarios", "home")"><i class="fa fa-fw fa-users"></i> FUNCIONÁRIOS </a>
+                        <a href="@Url.Action("Funcionarios", "Home")"><i class="fa fa-fw fa-users"></i> FUNCIONÁRIOS </a>
                     </li>
                 </ul>
             </div>
