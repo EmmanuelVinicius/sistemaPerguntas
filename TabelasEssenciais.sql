@@ -64,12 +64,14 @@ constraint fk_AulaLegislacao foreign key (IDAulaLegislacao) references AulasLegi
 create table Legislacao
 (
 IDLegislacao int not null auto_increment,
-IDAluno int not null,
 Descricao varchar (100),
 QuantidadeAulas int,
 constraint pk_Legislacao primary key (IDLegislacao),
-constraint fk_Legislacao foreign key (IDAluno) references Alunos(IDAluno)
 );
+INSERT INTO Legislacao(Descricao, QuantidadeAulas) VALUES ('Legislação de Trânsito', 15);
+INSERT INTO Legislacao(Descricao, QuantidadeAulas) VALUES ('Direção Defensiva', 15);
+INSERT INTO Legislacao(Descricao, QuantidadeAulas) VALUES ('Meio Ambiente', 9);
+INSERT INTO Legislacao(Descricao, QuantidadeAulas) VALUES ('Mecânica', 6);
 
 create table Direcao
 (
