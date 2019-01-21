@@ -7,21 +7,17 @@
 <div class="text-center" style="padding:50px 0">
     <div class="logo">Entrar</div>
     <div class="login-form-1">
-        @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @id = "login-form", @class = "text-left" }))
-        {
-            <!--<form id="login-form" class="text-left" action="/Auth/Login">-->
+        <form id="login-form" class="text-left" action="/Auth/Ajax">
             <div class="login-form-main-message"></div>
             <div class="main-login-form">
                 <div class="login-group">
                     <div class="form-group">
                         <label for="lg_username" class="sr-only">Email</label>
-                        @Html.TextBoxFor(x => x.Email, "", new { @class = "form-control", @id = "lg_username", @type = "email", @placeholder = "email", @required = "required" })
-                        <!--<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="usuário">-->
+                        <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="usuário">
                     </div>
                     <div class="form-group">
                         <label for="lg_password" class="sr-only">Senha</label>
-                        @Html.TextBoxFor(x => x.Senha, "", new { @class = "form-control", @id = "lg_password", @type = "password", @placeholder = "senha", @required = "required" })
-                        <!--<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="senha">-->
+                        <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="senha">
                     </div>
                     <div class="form-group login-group-checkbox">
                         <input type="checkbox" id="lg_remember" name="lg_remember">
@@ -32,10 +28,7 @@
             </div>
             <div class="etc-login-form">
                 <p>Esqueceu sua senha? <a href="/Auth/ForgPass">Clique aqui</a></p>
-                <p>Novo por aqui? <a href="/Auth/Register">Crie uma conta</a></p>
             </div>
-            <!--</form>-->
-        }
-
+        </form>
     </div>
 </div>

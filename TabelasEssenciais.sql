@@ -1,4 +1,4 @@
-create database AutoEscola;
+﻿create database AutoEscola;
 use AutoEscola;
 drop database AutoEscola;
 
@@ -61,6 +61,15 @@ constraint fk_AlunosEmLegislacao foreign key (IDAluno) references Alunos(IDAluno
 constraint fk_AulaLegislacao foreign key (IDAulaLegislacao) references AulasLegislacao(IDAulaLegislacao)
 );
 
+create table Legislacao
+(
+IDLegislacao int not null auto_increment,
+IDAluno int not null,
+Descricao varchar (100),
+QuantidadeAulas int,
+constraint pk_Legislacao primary key (IDLegislacao),
+constraint fk_Legislacao foreign key (IDAluno) references Alunos(IDAluno)
+);
 
 create table Direcao
 (

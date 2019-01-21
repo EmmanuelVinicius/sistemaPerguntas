@@ -1,12 +1,10 @@
-﻿using sistemaPerguntasWeb.App_Start;
-using sistemaPerguntasWeb.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Text;
 using System.Web.Mvc;
+using sistemaPerguntasWeb.Models;
+using sistemaPerguntasWeb.App_Start;
 
 namespace sistemaPerguntasWeb.Controllers
 {
@@ -18,13 +16,14 @@ namespace sistemaPerguntasWeb.Controllers
         public ActionResult Index()
         {
             List<Etapas> etapas = new List<Etapas>();
-            var comando = SQL.GetDataSet("SELECT * FROM RegioesPais"/*Etapas*/);
+            var comando = SQL.GetDataSet("SELECT * FROM Etapas");
+            /*var comando = SQL.GetDataSet("SELECT * FROM sql10275090.INFORMATION_SCHEMA.TABLES");*/
             int cont = 0;
             for (int i = 0; i < comando.Tables[0].Rows.Count; i++)
             {
                 etapas.Add(new Etapas());
-                etapas[cont].IDRegiaoPais/*IDEtapa*/ = (int)comando.Tables[0].Rows[i]["IDRegiaoPais"];
-                etapas[cont].Nome/*Descricao*/ = comando.Tables[0].Rows[i]["Nome"].ToString();
+                etapas[cont].IDEtapa = (int)comando.Tables[0].Rows[i]["IDEtapa"];
+                etapas[cont].Descricao = comando.Tables[0].Rows[i]["Descricao"].ToString();
 
                 cont++;
             }
@@ -35,28 +34,30 @@ namespace sistemaPerguntasWeb.Controllers
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
             parametros.Add("@IDAluno", IDAluno);
 
-            ViewBag.ID = 4/*SQL.ExecuteScalar(dsAluno.ToString(), CommandType.Text, parametros)*/;
+            ViewBag.ID = SQL.ExecuteScalar(dsAluno.ToString(), CommandType.Text, parametros);
             return View(etapas);
         }
         public ActionResult MinhasAulas(string IDAluno)
         {
+            
             List<Legislacao> model = new List<Legislacao>();
+            /*
             model.Add(new Legislacao(1, 1, "Legislação", 15));
             model.Add(new Legislacao(2, 1, "Direção Defensiva", 15));
             model.Add(new Legislacao(3, 1, "Meio Ambiente", 9));
             model.Add(new Legislacao(4, 1, "Mecânica", 6));
 
             IDAluno = Request.QueryString["IDAluno"].ToString();
+            */
 
-            /*
-                var comando = SQL.ExecuteReader("SELECT * FROM Legislacao");
-                int cont = 0;
-                while (comando.HasRows)
-                {
-                    model[cont].Descricao = comando["Descricao"].ToString();
-                    cont++ ;
-                }
-                */
+            var comando = SQL.ExecuteReader("SELECT * FROM Legislacao");
+            int cont = 0;
+            while (comando.HasRows)
+            {
+                model[cont].Descricao = comando["Descricao"].ToString();
+                cont++;
+            }
+
             return View(model);
         }
         [HttpPost]

@@ -28,48 +28,63 @@
         remove_loading($(this));
 
         if (options['useAJAX'] == true) {
-            // Dummy AJAX request (Replace this with your AJAX code)
-            // If you don't want to use AJAX, remove this
             submit_form($(this));
-
-            // Cancel the normal submission.
-            // If you don't want to use AJAX, remove this
-            return true;
+            return false;
         }
     });
 
-    // Register Form
+    /**/
+
+    // Loading
     //----------------------------------------------
-    // Validation
-    $("#register-form").validate({
-        rules: {
-            reg_username: "required",
-            reg_password: {
-                required: true,
-                minlength: 5
-            },
-            reg_password_confirm: {
-                required: true,
-                minlength: 5,
-                equalTo: "#register-form [name=reg_password]"
-            },
-            reg_email: {
-                required: true,
-                email: true
-            },
-            reg_agree: "required",
-        },
-        errorClass: "form-invalid",
-        errorPlacement: function (label, element) {
-            if (element.attr("type") === "checkbox" || element.attr("type") === "radio") {
-                element.parent().append(label); // this would append the label after all your checkboxes/labels (so the error-label will be the last element in <div class="controls"> )
-            }
-            else {
-                label.insertAfter(element); // standard behaviour
-            }
-        }
-    });
+    function remove_loading($form) {
+        $form.find('[type=submit]').removeClass('error success');
+        $form.find('.login-form-main-message').removeClass('show error success').html('');
+    }
 
+    function form_loading($form) {
+        $form.find('[type=submit]').addClass('clicked').html(options['btn-loading']);
+    }
+
+    function form_success($form) {
+        $form.find('[type=submit]').addClass('success').html(options['btn-success']);
+        $form.find('.login-form-main-message').addClass('show success').html(options['msg-success']);
+    }
+
+    function form_failed($form) {
+        $form.find('[type=submit]').addClass('error').html(options['btn-error']);
+        $form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);
+    }
+    function submit_form($form) {
+        if ($form.valid()) {
+            form_loading($form);
+
+            $.ajax({
+                url: "/Auth/Ajax",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    Email: $('#lg_username').val(),
+                    Senha: $('#lg_password').val()
+                }),
+                success: function (result) {
+                    if (result == "Invalido") {
+                        form_failed($form);
+                    }
+                    else {
+                        window.location.href = (result.Url.replace(/"/g, ''));
+                    }
+                },
+            });
+        }
+    }
+})(jQuery);
+
+
+
+
+/*
     // Form Submission
     $("#register-form").submit(function () {
         remove_loading($(this));
@@ -109,52 +124,4 @@
             return false;
         }
     });
-
-    // Loading
-    //----------------------------------------------
-    function remove_loading($form) {
-        $form.find('[type=submit]').removeClass('error success');
-        $form.find('.login-form-main-message').removeClass('show error success').html('');
-    }
-
-    function form_loading($form) {
-        $form.find('[type=submit]').addClass('clicked').html(options['btn-loading']);
-    }
-
-    function form_success($form) {
-        $form.find('[type=submit]').addClass('success').html(options['btn-success']);
-        $form.find('.login-form-main-message').addClass('show success').html(options['msg-success']);
-    }
-
-    function form_failed($form) {
-        $form.find('[type=submit]').addClass('error').html(options['btn-error']);
-        $form.find('.login-form-main-message').addClass('show error').html(options['msg-error']);
-    }
-
-    // Dummy Submit Form (Remove this)
-    //----------------------------------------------
-    // This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
-    function submit_form($form) {
-        if ($form.valid()) {
-            form_loading($form);
-            
-            $.ajax({
-                url: "/Auth/Login",
-                type: "POST",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({
-                    Email: $('#lg_username').val(),
-                    Senha: $('#lg_password').val()
-                }),
-                success: function (result) {
-                    if (result == 'Invalido') {
-                        form_failed($form);
-                    }
-                },
-            });
-        }
-        else
-            return false;
-    }
-})(jQuery); 
+ */

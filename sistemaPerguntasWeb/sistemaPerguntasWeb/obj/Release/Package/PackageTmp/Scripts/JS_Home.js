@@ -11,19 +11,12 @@
         $(".modal-title").text($(this).text())
         $(".modal-body").text();
     });
-    //$("#busca").quicksearch("html body p small font");
     $("#consulta").on('keyup', function () {
         var value = $(this).val().toLowerCase();
         $("table tbody tr").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         });
-    });/*
-    $("#myInput").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-    });*/
+    });
     $("#txtBusca").keyup(function () {
         var texto = $(this).val();
 
@@ -33,4 +26,23 @@
                 $(this).css("display", "none");
         });
     });
+    var leg = $("#form-legislacao"),
+        dir = $("#form-direcao");
+    $([leg[0], dir[0]]).submit(function () {
+        $("body").addClass(".loading")
+    })
+    $(document).ready(function () {
+        $("body").removeClass(".loading")
+    })
+
+    $(".AulaLeg").change(function (ev) {
+        var servico = $(ev.target).parents(".input-group").find(".form-control");  
+        if (servico.attr('disabled') == 'disabled') {
+            servico.removeAttr('disabled')
+        } else {
+            servico.attr('disabled', 'disabled')
+
+        }
+            console.log(servico.attr("placeholder"))
+    })
 })

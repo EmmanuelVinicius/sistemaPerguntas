@@ -10,19 +10,19 @@
         <div class="col-md-12 well text-center" id="content">
             @foreach (var ID in @Model)
             {
-                if (ViewBag.ID == @ID.IDRegiaoPais)
+                if (ViewBag.ID == @ID.IDEtapa)
                 {
                     <a class="list-group-item list-group-item-action list-group-item-info imodal">
-                        <h1>@ID.Nome</h1>
+                        <h1>@ID.Descricao</h1>
                     </a>
                 }
-                else if (ViewBag.ID < @ID.IDRegiaoPais)
+                else if (ViewBag.ID < @ID.IDEtapa)
                 {
-                    <a class="text-danger imodal"><h3>@ID.Nome</h3></a>
+                    <a class="text-danger imodal"><h3>@ID.Descricao</h3></a>
                 }
                 else
                 {
-                    <a class="text-secondary imodal"><h3>@ID.Nome</h3></a>
+                    <a class="text-secondary imodal"><h3>@ID.Descricao</h3></a>
                 }
             }
         </div>

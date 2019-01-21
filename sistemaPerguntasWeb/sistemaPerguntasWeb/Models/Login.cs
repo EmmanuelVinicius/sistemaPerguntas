@@ -21,7 +21,7 @@ namespace sistemaPerguntasWeb.Models
 		{
 			Email = email;
 			Senha = pass;
-			if (Banco(email, /*Criptografa(*/pass/*)*/))
+			if (Banco(email, Criptografa(pass)))
 				return true;
 			else
 				return false;
@@ -53,7 +53,7 @@ namespace sistemaPerguntasWeb.Models
             try
             {
 
-            /*Conexão do trampo*/
+            /*Conexão do trampo
                 string strConexao = ConfigurationManager.ConnectionStrings["iusConnectionString"].ConnectionString;
 				SqlConnection banco = new SqlConnection(strConexao);
 				SqlCommand ins = new SqlCommand();
@@ -70,7 +70,7 @@ namespace sistemaPerguntasWeb.Models
 				if (TemLinhas)
 					return true;
 				else
-					return false;
+					return false;*/
 
 
                 /*Conexão do barraco
@@ -91,6 +91,25 @@ namespace sistemaPerguntasWeb.Models
 					return true;
 				else
 					return false;*/
+
+                /*Conexão MySql Externo*/
+                string strConexao = ConfigurationManager.ConnectionStrings["mySqlExternoConnectionString"].ConnectionString;
+                MySqlConnection banco = new MySqlConnection(strConexao);
+                MySqlCommand ins = new MySqlCommand();
+
+                ins.CommandText = $"SELECT A.IDAluno, A.NomeCompleto FROM Usuarios U INNER JOIN Alunos A ON U.IDAluno = A.IDAluno WHERE U.Email = '{email}' AND U.Senha = '{senha}'";
+                ins.Connection = banco;
+                banco.Open();
+                var dr = ins.ExecuteReader();
+                while (dr.Read())
+                    ID = dr.GetInt32(("IDAluno").ToString());
+                bool TemLinhas = dr.HasRows;
+                dr.Close();
+                banco.Close();
+                if (TemLinhas)
+                    return true;
+                else
+                    return false;
             }
             catch (Exception ex)
             {

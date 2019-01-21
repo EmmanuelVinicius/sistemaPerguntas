@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Web;
 
@@ -10,14 +10,14 @@ namespace sistemaPerguntasWeb.App_Start
 {
     public class SQL
     {
-        private static string conexao = ConfigurationManager.ConnectionStrings["iusConnectionString"].ConnectionString;
+        private static string conexao = ConfigurationManager.ConnectionStrings["mySqlExternoConnectionString"].ConnectionString;
         //Update, Alter e Delete
         public static void ExecutarQuery_SemTempoLimite(string strQuery)
         {
-            SqlConnection cnn = new SqlConnection();
+            MySqlConnection cnn = new MySqlConnection();
             cnn.ConnectionString = conexao;
 
-            SqlCommand cmd = cnn.CreateCommand();
+            MySqlCommand cmd = cnn.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = strQuery;
             cmd.CommandTimeout = 0;
@@ -27,7 +27,7 @@ namespace sistemaPerguntasWeb.App_Start
                 cnn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 throw ex;
             }
@@ -37,22 +37,22 @@ namespace sistemaPerguntasWeb.App_Start
             }
         }
         //Query.ToString(), CommandType.Text, parametros
-        public static int ExecuteScalar(string nomeProc, Dictionary<string, SqlDbType> parametroOutPut, Dictionary<string, Object> parametros)
+        public static int ExecuteScalar(string nomeProc, Dictionary<string, MySqlDbType> parametroOutPut, Dictionary<string, Object> parametros)
         {
-            SqlConnection cnn = new SqlConnection();
+            MySqlConnection cnn = new MySqlConnection();
             cnn.ConnectionString = conexao;
             string retorno = "";
             try
             {
-                SqlCommand cmd = cnn.CreateCommand();
+                MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = nomeProc;
                 cmd.CommandTimeout = 120;
 
-                foreach (KeyValuePair<string, SqlDbType> parametroOut in parametroOutPut)
+                foreach (KeyValuePair<string, MySqlDbType> parametroOut in parametroOutPut)
                 {
                     retorno = parametroOut.Key;
-                    cmd.Parameters.Add(new SqlParameter(retorno, parametroOut.Value));
+                    cmd.Parameters.Add(new MySqlParameter(retorno, parametroOut.Value));
                     cmd.Parameters[retorno].Direction = ParameterDirection.Output;
                 }
 
@@ -76,7 +76,7 @@ namespace sistemaPerguntasWeb.App_Start
 
                 return ID;
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 throw ex;
             }
@@ -90,12 +90,12 @@ namespace sistemaPerguntasWeb.App_Start
         }
         public static void ExecutarQuery_SemTempoLimite(string strQuery, CommandType Tipo, Dictionary<string, Object> parametros)
         {
-            SqlConnection cnn = new SqlConnection();
+            MySqlConnection cnn = new MySqlConnection();
             cnn.ConnectionString = conexao;
 
             try
             {
-                SqlCommand cmd = cnn.CreateCommand();
+                MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandType = Tipo;
                 cmd.CommandText = strQuery;
                 cmd.CommandTimeout = 0;
@@ -108,7 +108,7 @@ namespace sistemaPerguntasWeb.App_Start
                 cnn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 throw ex;
             }
@@ -121,10 +121,10 @@ namespace sistemaPerguntasWeb.App_Start
 
         public static void ExecutarQuery(string strQuery)
         {
-            SqlConnection cnn = new SqlConnection();
+            MySqlConnection cnn = new MySqlConnection();
             cnn.ConnectionString = conexao;
 
-            SqlCommand cmd = cnn.CreateCommand();
+            MySqlCommand cmd = cnn.CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = strQuery;
             cmd.CommandTimeout = 120;
@@ -134,7 +134,7 @@ namespace sistemaPerguntasWeb.App_Start
                 cnn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 throw ex;
             }
@@ -146,12 +146,12 @@ namespace sistemaPerguntasWeb.App_Start
 
         public static void ExecutarQuery(string strQuery, CommandType Tipo, Dictionary<string, Object> parametros)
         {
-            SqlConnection cnn = new SqlConnection();
+            MySqlConnection cnn = new MySqlConnection();
             cnn.ConnectionString = conexao;
 
             try
             {
-                SqlCommand cmd = cnn.CreateCommand();
+                MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandType = Tipo;
                 cmd.CommandText = strQuery;
                 cmd.CommandTimeout = 120;
@@ -164,7 +164,7 @@ namespace sistemaPerguntasWeb.App_Start
                 cnn.Open();
                 cmd.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 throw ex;
             }
@@ -177,13 +177,13 @@ namespace sistemaPerguntasWeb.App_Start
 
         public static int ExecuteScalar(string strQuery, CommandType Tipo, Dictionary<string, Object> parametros)
         {
-            SqlConnection cnn = new SqlConnection();
+            MySqlConnection cnn = new MySqlConnection();
             cnn.ConnectionString = conexao;
             object retorno;
 
             try
             {
-                SqlCommand cmd = cnn.CreateCommand();
+                MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandType = Tipo;
                 cmd.CommandText = strQuery;
                 cmd.CommandTimeout = 120;
@@ -203,7 +203,7 @@ namespace sistemaPerguntasWeb.App_Start
 
                 return Total;
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 throw ex;
             }
@@ -216,13 +216,13 @@ namespace sistemaPerguntasWeb.App_Start
 
         public static float ExecuteScalar_float(string strQuery, CommandType Tipo, Dictionary<string, Object> parametros)
         {
-            SqlConnection cnn = new SqlConnection();
+            MySqlConnection cnn = new MySqlConnection();
             cnn.ConnectionString = conexao;
             object retorno;
 
             try
             {
-                SqlCommand cmd = cnn.CreateCommand();
+                MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandType = Tipo;
                 cmd.CommandText = strQuery;
                 cmd.CommandTimeout = 120;
@@ -242,7 +242,7 @@ namespace sistemaPerguntasWeb.App_Start
 
                 return Total;
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 throw ex;
             }
@@ -253,15 +253,15 @@ namespace sistemaPerguntasWeb.App_Start
             }
         }
 
-        public static SqlDataReader ExecuteReader(string strQuery, CommandType Tipo, Dictionary<string, Object> parametros)
+        public static MySqlDataReader ExecuteReader(string strQuery, CommandType Tipo, Dictionary<string, Object> parametros)
         {
-            SqlConnection cnn = new SqlConnection();
-            SqlDataReader dr;
+            MySqlConnection cnn = new MySqlConnection();
+            MySqlDataReader dr;
             cnn.ConnectionString = conexao;
 
             try
             {
-                SqlCommand cmd = cnn.CreateCommand();
+                MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandType = Tipo;
                 cmd.CommandText = strQuery;
                 cmd.CommandTimeout = 120;
@@ -275,7 +275,7 @@ namespace sistemaPerguntasWeb.App_Start
                 dr = cmd.ExecuteReader();
                 return dr;
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 throw ex;
             }
@@ -286,15 +286,15 @@ namespace sistemaPerguntasWeb.App_Start
             }
         }
 
-        public static SqlDataReader ExecuteReader(string strQuery)
+        public static MySqlDataReader ExecuteReader(string strQuery)
         {
-            SqlConnection cnn = new SqlConnection();
-            SqlDataReader dr;
+            MySqlConnection cnn = new MySqlConnection();
+            MySqlDataReader dr;
             cnn.ConnectionString = conexao;
 
             try
             {
-                SqlCommand cmd = cnn.CreateCommand();
+                MySqlCommand cmd = cnn.CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = strQuery;
                 cmd.CommandTimeout = 120;
@@ -303,7 +303,7 @@ namespace sistemaPerguntasWeb.App_Start
                 dr = cmd.ExecuteReader();
                 return dr;
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 throw ex;
             }
@@ -315,8 +315,8 @@ namespace sistemaPerguntasWeb.App_Start
         
         public static DataSet GetDataSet(string strQuery)
         {
-            SqlConnection MyConnection = new SqlConnection(conexao);
-            SqlDataAdapter MyDataAdapter = new SqlDataAdapter(strQuery, MyConnection);
+            MySqlConnection MyConnection = new MySqlConnection(conexao);
+            MySqlDataAdapter MyDataAdapter = new MySqlDataAdapter(strQuery, MyConnection);
             MyDataAdapter.SelectCommand.CommandType = CommandType.Text;
             MyDataAdapter.SelectCommand.CommandTimeout = 120;
 
@@ -338,8 +338,8 @@ namespace sistemaPerguntasWeb.App_Start
 
         public static DataSet GetDataSet(string strQuery, CommandType Tipo, Dictionary<string, Object> parametros)
         {
-            SqlConnection MyConnection = new SqlConnection(conexao);
-            SqlDataAdapter MyDataAdapter = new SqlDataAdapter(strQuery, MyConnection);
+            MySqlConnection MyConnection = new MySqlConnection(conexao);
+            MySqlDataAdapter MyDataAdapter = new MySqlDataAdapter(strQuery, MyConnection);
             MyDataAdapter.SelectCommand.CommandType = Tipo;
             MyDataAdapter.SelectCommand.CommandTimeout = 120;
 
@@ -367,8 +367,8 @@ namespace sistemaPerguntasWeb.App_Start
 
         public static DataSet GetDataSet(string strQuery, CommandType Tipo)
         {
-            SqlConnection MyConnection = new SqlConnection(conexao);
-            SqlDataAdapter MyDataAdapter = new SqlDataAdapter(strQuery, MyConnection);
+            MySqlConnection MyConnection = new MySqlConnection(conexao);
+            MySqlDataAdapter MyDataAdapter = new MySqlDataAdapter(strQuery, MyConnection);
             MyDataAdapter.SelectCommand.CommandType = Tipo;
             MyDataAdapter.SelectCommand.CommandTimeout = 120;
 
@@ -390,8 +390,8 @@ namespace sistemaPerguntasWeb.App_Start
 
         public static DataSet GetDataSet_SemTempoLimite(string strQuery, CommandType Tipo, Dictionary<string, Object> parametros)
         {
-            SqlConnection MyConnection = new SqlConnection(conexao);
-            SqlDataAdapter MyDataAdapter = new SqlDataAdapter(strQuery, MyConnection);
+            MySqlConnection MyConnection = new MySqlConnection(conexao);
+            MySqlDataAdapter MyDataAdapter = new MySqlDataAdapter(strQuery, MyConnection);
             MyDataAdapter.SelectCommand.CommandType = Tipo;
             MyDataAdapter.SelectCommand.CommandTimeout = 0;
 
@@ -418,8 +418,8 @@ namespace sistemaPerguntasWeb.App_Start
         }
         public static DataSet GetDataSet_SemTempoLimite(string strQuery)
         {
-            SqlConnection MyConnection = new SqlConnection(conexao);
-            SqlDataAdapter MyDataAdapter = new SqlDataAdapter(strQuery, MyConnection);
+            MySqlConnection MyConnection = new MySqlConnection(conexao);
+            MySqlDataAdapter MyDataAdapter = new MySqlDataAdapter(strQuery, MyConnection);
             MyDataAdapter.SelectCommand.CommandType = CommandType.Text;
             MyDataAdapter.SelectCommand.CommandTimeout = 0;
 
@@ -440,8 +440,8 @@ namespace sistemaPerguntasWeb.App_Start
         }
         public static DataTable GetDataTable(string strQuery, CommandType Tipo, Dictionary<string, Object> parametros)
         {
-            SqlConnection MyConnection = new SqlConnection(conexao);
-            SqlDataAdapter MyDataAdapter = new SqlDataAdapter(strQuery, MyConnection);
+            MySqlConnection MyConnection = new MySqlConnection(conexao);
+            MySqlDataAdapter MyDataAdapter = new MySqlDataAdapter(strQuery, MyConnection);
             MyDataAdapter.SelectCommand.CommandType = Tipo;
             MyDataAdapter.SelectCommand.CommandTimeout = 120;
 
@@ -469,8 +469,8 @@ namespace sistemaPerguntasWeb.App_Start
 
         public static DataTable GetDataTable(string strQuery)
         {
-            SqlConnection MyConnection = new SqlConnection(conexao);
-            SqlDataAdapter MyDataAdapter = new SqlDataAdapter(strQuery, MyConnection);
+            MySqlConnection MyConnection = new MySqlConnection(conexao);
+            MySqlDataAdapter MyDataAdapter = new MySqlDataAdapter(strQuery, MyConnection);
             MyDataAdapter.SelectCommand.CommandType = CommandType.Text;
             MyDataAdapter.SelectCommand.CommandTimeout = 120;
 

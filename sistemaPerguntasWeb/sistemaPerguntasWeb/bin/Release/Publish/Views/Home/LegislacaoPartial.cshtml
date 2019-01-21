@@ -1,7 +1,8 @@
-﻿<div id="accordion">
+﻿@model List<Legislacao>
+<div id="accordion">
     @foreach (var item in @Model)
     {
-        using (Html.BeginForm("MinhasAulas", "Home", FormMethod.Post))
+        using (Html.BeginForm("LegislacaoPartial", "Home", FormMethod.Post, new { @id = "form-legislacao" }))
         {
             <div class="card">
                 <div class="card-header" id="heading-@item.IDLegislacao">
@@ -18,12 +19,12 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                        <input type="checkbox" name="check-@i" id="check-@i">
+                                        <input type="checkbox" name="check-@i" class="AulaLeg" id="check-@i" value="@i">
                                     </div>
                                 </div>
                                 <label class="input-group-text" for="check-@i">Aula @i</label>
-                                <input type="text" name="comentario-@i" class="form-control" placeholder="Comentário...">
-                            </div><hr>
+                                <input type="text" name="comentario-@i" class="form-control" disabled="disabled" placeholder="Comentário...">
+                            </div><hr >
                         }
                         <button class="btn btn-success" type="submit">Salvar</button>
                     </div>

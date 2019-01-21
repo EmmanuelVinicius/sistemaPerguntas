@@ -220,10 +220,10 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/10/2018 11:36:25</publishTime>
     </File>
     <File Include="bin/sistemaPerguntasWeb.dll">
-      <publishTime>09/14/2018 10:57:47</publishTime>
+      <publishTime>01/21/2019 11:12:26</publishTime>
     </File>
     <File Include="bin/sistemaPerguntasWeb.pdb">
-      <publishTime>09/14/2018 10:57:47</publishTime>
+      <publishTime>01/21/2019 11:12:26</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>09/10/2018 11:36:25</publishTime>
@@ -247,7 +247,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/14/2018 09:49:05</publishTime>
     </File>
     <File Include="Content/CSS_Home.css">
-      <publishTime>09/14/2018 09:46:21</publishTime>
+      <publishTime>10/29/2018 13:05:44</publishTime>
     </File>
     <File Include="Content/CSS_Main.css">
       <publishTime>09/10/2018 11:36:26</publishTime>
@@ -256,10 +256,10 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/10/2018 11:36:26</publishTime>
     </File>
     <File Include="Scripts/JS_Home.js">
-      <publishTime>09/13/2018 12:48:53</publishTime>
+      <publishTime>12/03/2018 11:30:10</publishTime>
     </File>
     <File Include="Scripts/JS_Main.js">
-      <publishTime>09/10/2018 11:36:26</publishTime>
+      <publishTime>11/14/2018 15:43:14</publishTime>
     </File>
     <File Include="Scripts/JS_Quiz.js">
       <publishTime>09/13/2018 13:34:43</publishTime>
@@ -268,37 +268,37 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/10/2018 11:36:26</publishTime>
     </File>
     <File Include="Views/Auth/Login.cshtml">
-      <publishTime>09/10/2018 11:36:26</publishTime>
+      <publishTime>11/14/2018 15:44:08</publishTime>
     </File>
     <File Include="Views/Auth/Register.cshtml">
       <publishTime>09/10/2018 11:36:26</publishTime>
     </File>
     <File Include="Views/Home/DirecaoPartial.cshtml">
-      <publishTime>09/10/2018 13:48:04</publishTime>
+      <publishTime>11/20/2018 11:27:14</publishTime>
     </File>
     <File Include="Views/Home/Funcionarios.cshtml">
-      <publishTime>09/13/2018 11:07:33</publishTime>
+      <publishTime>11/20/2018 13:29:16</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>09/13/2018 14:41:48</publishTime>
+      <publishTime>01/21/2019 08:36:59</publishTime>
     </File>
     <File Include="Views/Home/LegislacaoPartial.cshtml">
-      <publishTime>09/10/2018 15:09:58</publishTime>
+      <publishTime>11/07/2018 15:58:03</publishTime>
     </File>
     <File Include="Views/Home/MinhasAulas.cshtml">
-      <publishTime>09/10/2018 13:58:52</publishTime>
+      <publishTime>11/20/2018 11:52:35</publishTime>
     </File>
     <File Include="Views/Home/ProgramacaoAulas.cshtml">
-      <publishTime>09/13/2018 13:11:11</publishTime>
+      <publishTime>12/05/2018 14:03:30</publishTime>
     </File>
     <File Include="Views/Home/ProgramacaoDiversas.cshtml">
-      <publishTime>09/13/2018 11:07:32</publishTime>
+      <publishTime>11/20/2018 11:52:12</publishTime>
     </File>
     <File Include="Views/Perguntas/Legislacao.cshtml">
       <publishTime>09/11/2018 14:15:23</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutHome.cshtml">
-      <publishTime>09/14/2018 10:02:37</publishTime>
+      <publishTime>12/13/2018 15:04:45</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutLogin.cshtml">
       <publishTime>09/10/2018 11:36:26</publishTime>
@@ -307,7 +307,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/10/2018 11:36:26</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/14/2018 10:57:48</publishTime>
+      <publishTime>01/21/2019 11:12:27</publishTime>
     </File>
   </ItemGroup>
 </Project>

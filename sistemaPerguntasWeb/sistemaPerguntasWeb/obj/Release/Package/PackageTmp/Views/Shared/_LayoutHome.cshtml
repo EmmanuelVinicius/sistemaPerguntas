@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    Login login = new Login();
+    int IDAluno = login.ID;
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -41,10 +45,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="@Url.Action("index", "home")"><i class="fa fa-fw fa-home"></i> HOME </a>
+                        <a href="@Url.Action("Index","Home", new {IDAluno})"><i class="fa fa-fw fa-home"></i> HOME </a>
                     </li>
                     <li>
-                        <a href="MinhasAulas"><i class="fa fa-fw fa-pencil-square"></i> MINHAS AULAS </a>
+                        <a href="@Url.Action("MinhasAulas", "Home", new {IDAluno})"><i class="fa fa-fw fa-pencil-square"></i> MINHAS AULAS </a>
                     </li>
                     <li>
                         <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-list-ul"></i>  PROGRAMAÇÃO <i class="fa fa-fw fa-angle-down pull-right"></i></a>
@@ -57,7 +61,7 @@
                         <a href="Provinha"><i class="fa fa-fw fa fa-file-text"></i> PROVINHA </a>
                     </li>
                     <li>
-                        <a href="Funcionarios"><i class="fa fa-fw fa-users"></i> FUNCIONÁRIOS </a>
+                        <a href="@Url.Action("Funcionarios", "Home")"><i class="fa fa-fw fa-users"></i> FUNCIONÁRIOS </a>
                     </li>
                 </ul>
             </div>
@@ -80,12 +84,12 @@
                 </div>
             </div>
         </div>
-
         @RenderBody()
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
-        <script src="~/Scripts/JS_Home.js"></script>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+    <script src="~/Scripts/JS_Home.js"></script>
 
 </body>
 </html>
