@@ -17,7 +17,6 @@ namespace sistemaPerguntasWeb.Controllers
         {
             List<Etapas> etapas = new List<Etapas>();
             var comando = SQL.GetDataSet("SELECT * FROM Etapas");
-            /*var comando = SQL.GetDataSet("SELECT * FROM sql10275090.INFORMATION_SCHEMA.TABLES");*/
             int cont = 0;
             for (int i = 0; i < comando.Tables[0].Rows.Count; i++)
             {
@@ -47,17 +46,20 @@ namespace sistemaPerguntasWeb.Controllers
             model.Add(new Legislacao(3, 1, "Meio Ambiente", 9));
             model.Add(new Legislacao(4, 1, "Mecânica", 6));
 
-            IDAluno = Request.QueryString["IDAluno"].ToString();
             */
 
-            var comando = SQL.ExecuteReader("SELECT * FROM Legislacao");
+            var comando = SQL.GetDataSet("SELECT * FROM Legislacao");
             int cont = 0;
-            while (comando.HasRows)
+            for (int i = 0; i < comando.Tables[0].Rows.Count; i++)
             {
-                model[cont].Descricao = comando["Descricao"].ToString();
+                model.Add(new Legislacao());
+                model[cont].IDLegislacao = (int)comando.Tables[0].Rows[i]["IDLegislacao"];
+                model[cont].Descricao = comando.Tables[0].Rows[i]["Descricao"].ToString();
+                model[cont].QuantidadeAulas = (int)comando.Tables[0].Rows[i]["QuantidadeAulas"];
                 cont++;
             }
 
+            IDAluno = Request.QueryString["IDAluno"].ToString();
             return View(model);
         }
         [HttpPost]
