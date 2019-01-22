@@ -1,20 +1,29 @@
-﻿@{int ListagemDirecao = 0; }
+﻿@{
+    int ListagemDirecao = 1;
+    string checado = ""; //string checado = (ListagemDirecao < ViewBag.AulasFeitas) ? "checked" : ""
+}
 
-    @using (Html.BeginForm("DirecaoPartial", "Home", FormMethod.Post, new { @id = "form-direcao" }))
-    {
-        for (int i = 0; i < 7; i++)
+        Aulas feitas: @ViewBag.AulasFeitas
+        @using (Html.BeginForm("DirecaoPartial", "Home", FormMethod.Post, new { @id = "form-direcao" }))
         {
-            <div class="row list-group-item list-group-item-action lista">
-                @for (int j = 0; j < 3; j++)
-                {
+            for (int i = 1; i <= 5; i++)
+            {
+                <div class="row list-group-item list-group-item-action lista">
                     <div class="col">
-                        <input type="checkbox"  name="aulas" value="@ListagemDirecao" />Aula @ListagemDirecao
+                        <input type="checkbox" @(checado = (ListagemDirecao <= ViewBag.AulasFeitas) ? "checked" : "") name="aulas" value="@ListagemDirecao" />Aula @ListagemDirecao
                     </div>
-                    ListagemDirecao += 7;
-                }
-            </div>
-            ListagemDirecao = i + 1;
+                    <div class="col">
+                        <input type="checkbox" @(checado = ((ListagemDirecao + 1) <= ViewBag.AulasFeitas) ? "checked" : "") name="aulas" value="@(ListagemDirecao + 1)" />Aula @(ListagemDirecao + 1)
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" @(checado = ((ListagemDirecao + 2) <= ViewBag.AulasFeitas) ? "checked" : "") name="aulas" value="@(ListagemDirecao + 2)" />Aula @(ListagemDirecao + 2)
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" @(checado = ((ListagemDirecao + 3) <= ViewBag.AulasFeitas) ? "checked" : "") name="aulas" value="@(ListagemDirecao + 3)" />Aula @(ListagemDirecao + 3)
+                    </div>
+                </div>
+                ListagemDirecao += 4;
+            }
+            <hr />
+            <button type="submit" class="btn btn-success">Salvar</button>
         }
-        <hr />
-        <button type="submit" class="btn btn-success">Salvar</button>
-    }

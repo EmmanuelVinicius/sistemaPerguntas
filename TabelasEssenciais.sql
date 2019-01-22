@@ -25,7 +25,6 @@ Email varchar(50) not null,
 Senha varchar(128) not null,
 constraint fk_Usuario foreign key(IDAluno) references Alunos(IDAluno)
 );
-alter table Alunos drop IDUsuario;
 
 create table Etapas
 (
@@ -55,7 +54,7 @@ IDAluno int not null,
 IDAulaLegislacao int not null,
 NumeroAulaLegislacao int not null,
 ComentarioLegislacao varchar(100),
-NotaAula int not null,
+NotaAula int default 0,
 constraint pk_AlunosEmLegislacao primary key(IDAluno,IDAulaLegislacao),
 constraint fk_AlunosEmLegislacao foreign key (IDAluno) references Alunos(IDAluno),
 constraint fk_AulaLegislacao foreign key (IDAulaLegislacao) references AulasLegislacao(IDAulaLegislacao)
@@ -75,11 +74,11 @@ INSERT INTO Legislacao(Descricao, QuantidadeAulas) VALUES ('Mecânica', 6);
 
 create table Direcao
 (
-NumeroAulaDirecao int not null AUTO_INCREMENT,
 IDAluno int not null,
+AulasFeitas int default 0,
 ComentarioDirecao varchar(100),
-NotaAula int not null,
-constraint pk_Direcao primary key (NumeroAulaDirecao),
+NotaAula int default 0,
+constraint pk_Direcao primary key (IDAluno),
 constraint fk_Direcao foreign key (IDAluno) references Alunos(IDAluno)
 );
 
