@@ -220,10 +220,10 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/10/2018 11:36:25</publishTime>
     </File>
     <File Include="bin/sistemaPerguntasWeb.dll">
-      <publishTime>01/22/2019 17:51:57</publishTime>
+      <publishTime>01/23/2019 14:50:04</publishTime>
     </File>
     <File Include="bin/sistemaPerguntasWeb.pdb">
-      <publishTime>01/22/2019 17:51:57</publishTime>
+      <publishTime>01/23/2019 14:50:04</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>09/10/2018 11:36:25</publishTime>
@@ -247,7 +247,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/14/2018 09:49:05</publishTime>
     </File>
     <File Include="Content/CSS_Home.css">
-      <publishTime>10/29/2018 13:05:44</publishTime>
+      <publishTime>01/23/2019 09:27:35</publishTime>
     </File>
     <File Include="Content/CSS_Main.css">
       <publishTime>09/10/2018 11:36:26</publishTime>
@@ -256,7 +256,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/10/2018 11:36:26</publishTime>
     </File>
     <File Include="Scripts/JS_Home.js">
-      <publishTime>03/12/2018 11:30:10</publishTime>
+      <publishTime>01/23/2019 09:27:47</publishTime>
     </File>
     <File Include="Scripts/JS_Main.js">
       <publishTime>11/14/2018 15:43:14</publishTime>
@@ -274,7 +274,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/10/2018 11:36:26</publishTime>
     </File>
     <File Include="Views/Home/DirecaoPartial.cshtml">
-      <publishTime>01/22/2019 17:16:45</publishTime>
+      <publishTime>01/23/2019 09:24:32</publishTime>
     </File>
     <File Include="Views/Home/Funcionarios.cshtml">
       <publishTime>11/20/2018 13:29:16</publishTime>
@@ -283,13 +283,13 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>01/21/2019 17:04:27</publishTime>
     </File>
     <File Include="Views/Home/LegislacaoPartial.cshtml">
-      <publishTime>01/21/2019 17:48:56</publishTime>
+      <publishTime>01/23/2019 09:28:24</publishTime>
     </File>
     <File Include="Views/Home/MinhasAulas.cshtml">
       <publishTime>01/21/2019 17:48:56</publishTime>
     </File>
     <File Include="Views/Home/ProgramacaoAulas.cshtml">
-      <publishTime>05/12/2018 14:03:30</publishTime>
+      <publishTime>12/05/2018 14:03:30</publishTime>
     </File>
     <File Include="Views/Home/ProgramacaoDiversas.cshtml">
       <publishTime>11/20/2018 11:52:12</publishTime>

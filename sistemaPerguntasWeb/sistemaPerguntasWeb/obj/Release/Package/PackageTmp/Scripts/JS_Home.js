@@ -26,14 +26,11 @@
                 $(this).css("display", "none");
         });
     });
-    var leg = $("#form-legislacao"),
-        dir = $("#form-direcao");
-    $([leg[0], dir[0]]).submit(function () {
-        $("body").addClass(".loading")
-    })
-    $(document).ready(function () {
-        $("body").removeClass(".loading")
-    })
+
+    $('.btn').on('click', function () {
+        var $this = $(this);
+       $this.button('loading')
+    });
 
     $(".AulaLeg").change(function (ev) {
         var servico = $(ev.target).parents(".input-group").find(".form-control");  

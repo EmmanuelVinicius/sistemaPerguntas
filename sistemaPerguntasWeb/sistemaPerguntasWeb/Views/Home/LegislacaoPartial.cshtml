@@ -1,4 +1,6 @@
 ﻿@model List<Legislacao>
+    @{string checado;}
+
 <div id="accordion">
     @foreach (var item in @Model)
     {
@@ -8,23 +10,24 @@
                 <div class="card-header" id="heading-@item.IDLegislacao">
                     <h5 class="mb-0">
                         <a href="#" class="list-group-item list-group-item-action lista" data-toggle="collapse" data-target="#collapse-@item.IDLegislacao" aria-expanded="true" aria-controls="collapse-@item.IDLegislacao">
-                            @item.Descricao
+                            @item.Tema
                         </a>
                     </h5>
                 </div>
                 <div id="collapse-@item.IDLegislacao" class="collapse" aria-labelledby="heading-@item.IDLegislacao" data-parent="#accordion">
                     <div class="card-body list-group-item">
-                        @for (int i = 1; i < item.QuantidadeAulas + 1; i++)
+                        @for (int i = 1; i < item.QuantidadeAulasParaOTema + 1; i++)
                         {
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                        <input type="checkbox" name="check-@i" class="AulaLeg" id="check-@i" value="@i">
+                                        <input type="checkbox" @*@(checado = (item.Comentario.NumeroDaAula <= i) ? "checked" : "")*@ name="check" class="AulaLeg" id="check-@i" value="@i">
                                     </div>
                                 </div>
                                 <label class="input-group-text" for="check-@i">Aula @i</label>
-                                <input type="text" name="comentario-@i" class="form-control" disabled="disabled" placeholder="Comentário...">
-                            </div><hr >
+                                <input type="text" name="comentario" class="form-control" disabled="disabled" placeholder="Comentário..."
+                                       @*value="@item.Comentario.ComentarioDaAulaDeLegislacao"*@>
+                            </div><hr>
                         }
                         <button type="submit" class="btn btn-success" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Salvar">Salvar</button>
                     </div>
