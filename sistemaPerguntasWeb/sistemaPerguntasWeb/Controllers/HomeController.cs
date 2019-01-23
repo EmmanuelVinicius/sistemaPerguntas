@@ -5,6 +5,8 @@ using System.Text;
 using System.Web.Mvc;
 using sistemaPerguntasWeb.Models;
 using sistemaPerguntasWeb.App_Start;
+using System.Net;
+using System.IO;
 
 namespace sistemaPerguntasWeb.Controllers
 {
@@ -88,20 +90,17 @@ namespace sistemaPerguntasWeb.Controllers
         //    return PartialView();
         //}
         [HttpPost]
-        public ActionResult DirecaoPartial(int[] caixasMarcadas)
+        public ActionResult DirecaoPartial()
         {
-            caixasMarcadas = new int[Request.Form.Count];
-            for (int i = 0; i < caixasMarcadas.Length; i++)
-            {
-                caixasMarcadas[i] = Request.Form["aulas"][i];
-            }
+            var url = Request.Form["aulas"];
+            var caixasMarcadas = url.Split(',').Length;
             Dictionary<string, Object> parametros = new Dictionary<string, Object>();
             StringBuilder sbQuery = new StringBuilder();
             sbQuery.Append("UPDATE Direcao SET AulasFeitas = @AulasFeitas WHERE IDAluno = @IDAluno");
 
 
             parametros.Add("@IDAluno", Session["id"]);
-            parametros.Add("@AulasFeitas", caixasMarcadas.Length);
+            parametros.Add("@AulasFeitas", caixasMarcadas);
 
             SQL.ExecutarQuery(sbQuery.ToString(), CommandType.Text, parametros);
 

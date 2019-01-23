@@ -48,6 +48,11 @@ Descricao varchar(25) not null,
 Quantidade int not null,
 constraint pk_AulasLegislacao primary key (IDAulaLegislacao)
 );
+INSERT INTO AulasLegislacao (Descricao, Quantidade) VALUES ('Legislação de Trânsito', 15);
+INSERT INTO AulasLegislacao (Descricao, Quantidade) VALUES ('Direção Defensiva', 15);
+INSERT INTO AulasLegislacao (Descricao, Quantidade) VALUES ('Meio Ambiente', 9);
+INSERT INTO AulasLegislacao (Descricao, Quantidade) VALUES ('Mecânica', 6);
+
 create table AlunosEmLegislacao
 (
 IDAluno int not null,
@@ -60,25 +65,13 @@ constraint fk_AlunosEmLegislacao foreign key (IDAluno) references Alunos(IDAluno
 constraint fk_AulaLegislacao foreign key (IDAulaLegislacao) references AulasLegislacao(IDAulaLegislacao)
 );
 
-create table Legislacao
+create table AulasDeDirecao
 (
-IDLegislacao int not null auto_increment,
-Descricao varchar (100),
-QuantidadeAulas int,
-constraint pk_Legislacao primary key (IDLegislacao),
-);
-INSERT INTO Legislacao(Descricao, QuantidadeAulas) VALUES ('Legislação de Trânsito', 15);
-INSERT INTO Legislacao(Descricao, QuantidadeAulas) VALUES ('Direção Defensiva', 15);
-INSERT INTO Legislacao(Descricao, QuantidadeAulas) VALUES ('Meio Ambiente', 9);
-INSERT INTO Legislacao(Descricao, QuantidadeAulas) VALUES ('Mecânica', 6);
-
-create table Direcao
-(
+NumeroAula int not null,
 IDAluno int not null,
-AulasFeitas int default 0,
 ComentarioDirecao varchar(100),
 NotaAula int default 0,
-constraint pk_Direcao primary key (IDAluno),
+constraint pk_Direcao primary key IDAluno),
 constraint fk_Direcao foreign key (IDAluno) references Alunos(IDAluno)
 );
 
