@@ -11,7 +11,7 @@ namespace sistemaPerguntasWeb.Models
         public int IDAluno { get; set; }
         public string Tema { get; set; }
 		public int QuantidadeAulasParaOTema { get; set; }
-        public ComentarioLegislacao Comentario { get; set; }
+        public List<ComentarioLegislacao> Comentario { get; set; }
 
     }
 }

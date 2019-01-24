@@ -51,84 +51,52 @@ namespace sistemaPerguntasWeb.Controllers
                 model[i].IDLegislacao = (int)comando.Tables[0].Rows[i]["IDAulaLegislacao"];
                 model[i].Tema = comando.Tables[0].Rows[i]["Descricao"].ToString();
                 model[i].QuantidadeAulasParaOTema = (int)comando.Tables[0].Rows[i]["Quantidade"];
-                /*model[i].Comentario = TrazOsComentariosDasAulasDeLegislacao(Session["id"].ToString());*/
+                model[i].Comentario.Add(TrazOsComentariosDasAulasDeLegislacao(Session["id"].ToString(), model[i].IDLegislacao));
             }
             return model;
         }
-        /*public ComentarioLegislacao TrazOsComentariosDasAulasDeLegislacao(string IDAluno)
+        public List<ComentarioLegislacao> TrazOsComentariosDasAulasDeLegislacao(string IDAluno, int IDLegislacao)
         {
-            ComentarioLegislacao modelo = new ComentarioLegislacao();
+            List<ComentarioLegislacao> modelo = new List<ComentarioLegislacao>();
             StringBuilder sql = new StringBuilder();
             sql.Append("SELECT NumeroAulaLegislacao, ComentarioLegislacao FROM AlunosEmLegislacao");
-            sql.Append("INNER JOIN Alunos ON Alunos.IDAluno = AlunosEmLegislacao.IDAluno");
-            sql.Append("INNER JOIN AulasLegislacao ON AulasLegislacao.IDAulaLegislacao = AlunosEmLegislacao.IDAulalegislacao;");
-            sql.Append("WHERE Aluno.IDAluno = @IDAluno");
+            sql.Append($" WHERE IDAulaLegislacao = {IDLegislacao} AND IDAluno = {IDAluno}");
 
-            Dictionary<string, Object> parametros = new Dictionary<string, Object>();
-            parametros.Add("@IDAluno", IDAluno);
-            var comando = SQL.GetDataSet(sql.ToString(), CommandType.Text, parametros);
+            var comando = SQL.GetDataSet(sql.ToString());
             for (int i = 0; i < comando.Tables[0].Rows.Count; i++)
             {
-                modelo.Add(new ComentarioLegislacao());
                 modelo[i].NumeroDaAula = (int)comando.Tables[0].Rows[i]["NumeroAulaLegislacao"];
                 modelo[i].ComentarioDaAulaDeLegislacao = comando.Tables[0].Rows[i]["ComentarioLegislacao"].ToString();
             }
             return modelo;
-        }*/
+        }
         public int TrazAsAulasFeitasDeDirecao(string IDAluno)
         {
-            var AulasFeitas = ("SELECT AulasFeitas FROM Direcao WHERE IDAluno = @IDAluno");
+            var AulasFeitas = $"SELECT AulasFeitas FROM Direcao WHERE IDAluno = {IDAluno};";
 
-            Dictionary<string, Object> parametros = new Dictionary<string, Object>();
-            parametros.Add("@IDAluno", IDAluno);
-            var consulta = SQL.GetDataSet(AulasFeitas, CommandType.Text, parametros);
+            var consulta = SQL.GetDataSet(AulasFeitas);
             var NumeroDeAulasFeitas = int.Parse(consulta.Tables[0].Rows[0]["AulasFeitas"].ToString());
             return NumeroDeAulasFeitas;
         }
         [HttpPost]
-        public ActionResult LegislacaoPartial(string[] caixasMarcadas, string[] comentarios)
+        public ActionResult LegislacaoPartial()
         {
-
             var urlChecks = Request.Form["check"];
-            var quantidadeChecks = urlChecks.Split(',').Length;
-            caixasMarcadas = new string[quantidadeChecks];
-
             var urlComments = Request.Form["comentario"];
-            var quantidadeComments = urlComments.Split(',').Length;
-            comentarios = new string[quantidadeComments];
+            var IDAluno = int.Parse(Session["id"].ToString());
+            var btnID = int.Parse(Request.Form["btnID"]);
 
-
-
-
-
-            Dictionary<string, Object> parametros = new Dictionary<string, Object>();
             StringBuilder sbQuery = new StringBuilder();
+            for (int contador = 0; contador < urlChecks.Split(',').Length; contador++)
+            { 
+                var Checks = urlChecks.Split(',')[contador];
+                var Comments = urlComments.Split(',')[contador];
 
-
-
-            SQL.ExecutarQuery(sbQuery.ToString(), CommandType.Text, parametros);
-            List<string> lista = new List<string>();
-            int contador = 0;
-            foreach(var item in caixasMarcadas)
-            {
-                sbQuery.Append("INSERT INTO AulasLegislacao (IDAluno, IDAulaLegislacao, NumeroAulaLegislacao, ComentarioLegislacao ) VALUES");
-                sbQuery.Append("(@IDAluno, @IDAulaLegislacao, @NumeroAulaLegislacao, @ComentarioLegislacao )");
-
-                parametros.Add("@IDAluno", Session["id"]);
-                parametros.Add("@IDAulaLegislacao", TrazONomeDasAulasDeLegislacao());
-                parametros.Add("@NumeroAulaLegislacao", caixasMarcadas[contador]);
-                parametros.Add("@ComentarioLegislacao", comentarios[contador]);
-                contador++;
+                sbQuery.Append("INSERT INTO AlunosEmLegislacao (IDAluno, IDAulaLegislacao, NumeroAulaLegislacao, ComentarioLegislacao ) VALUES");
+                sbQuery.Append($"({IDAluno}, {btnID}, {Checks}, '{Comments}');");
+                sbQuery.Append("");
             }
-
-
-
-            for (int i = 0; i < condicao; i++)
-            {
-                caixasMarcadas[i] = Request.Form["check-" + (i + 1)];
-                comentarios[i] = Request.Form["comentario-" + (i + 1)];
-            }
-
+            SQL.ExecutarQuery(sbQuery.ToString());
             return RedirectToAction("MinhasAulas");
         }
         [HttpPost]
