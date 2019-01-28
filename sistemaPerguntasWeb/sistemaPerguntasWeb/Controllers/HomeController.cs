@@ -71,7 +71,7 @@ namespace sistemaPerguntasWeb.Controllers
         {
             List<ComentarioLegislacao> modelo = new List<ComentarioLegislacao>();
             StringBuilder sql = new StringBuilder();
-            sql.Append("SELECT NumeroAulaLegislacao, ComentarioLegislacao FROM AlunosEmLegislacao");
+            sql.Append("SELECT NumeroAulaLegislacao, ComentarioLegislacao, AulasLegislacao.IDAulalegislacao FROM AlunosEmLegislacao");
             sql.Append(" INNER JOIN Alunos ON Alunos.IDAluno = AlunosEmLegislacao.IDAluno");
             sql.Append(" INNER JOIN AulasLegislacao ON AulasLegislacao.IDAulaLegislacao = AlunosEmLegislacao.IDAulalegislacao");
             sql.Append(" WHERE Alunos.IDAluno = @IDAluno");
@@ -82,6 +82,7 @@ namespace sistemaPerguntasWeb.Controllers
             for (int i = 0; i < comando.Tables[0].Rows.Count; i++)
             {
                 modelo.Add(new ComentarioLegislacao());
+                modelo[i].IDAulaLegislacao = (int)comando.Tables[0].Rows[i]["IDAulaLegislacao"];
                 modelo[i].NumeroDaAula = (int)comando.Tables[0].Rows[i]["NumeroAulaLegislacao"];
                 modelo[i].ComentarioDaAulaDeLegislacao = comando.Tables[0].Rows[i]["ComentarioLegislacao"].ToString();
             }
@@ -107,8 +108,8 @@ namespace sistemaPerguntasWeb.Controllers
             StringBuilder sbQuery = new StringBuilder();
             for (int contador = 0; contador < urlChecks.Split(',').Length; contador++)
             {
-                var Checks = urlChecks.Split(',')[contador];
-                var Comments = urlComments.Split(',')[contador];
+                var Checks = (urlChecks.Split(',')[contador] == null) ? null : urlChecks.Split(',')[contador];
+                var Comments = (urlComments.Split(',')[contador] == null) ? null : urlComments.Split(',')[contador];
 
                 sbQuery.Append("INSERT INTO AlunosEmLegislacao (IDAluno, IDAulaLegislacao, NumeroAulaLegislacao, ComentarioLegislacao ) VALUES");
                 sbQuery.Append($"({IDAluno}, {btnID}, {Checks}, '{Comments}');");

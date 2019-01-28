@@ -1,5 +1,5 @@
 ﻿@model List<Legislacao>
-@{string checado = "";}
+@{string formatado = "";}
 
 <div id="accordion">
     @foreach (var item in @Model)
@@ -21,23 +21,12 @@
                             {
                             <div class="input-group mb-3">
                                 @{
-                                    var listDeComentarios = item.Comentarios.Where(c => c.NumeroDaAula == i).ToList();
-                                    if (listDeComentarios.Any())
-                                    {
+                                    var listDeComentarios = item.Comentarios.Where(c => c.NumeroDaAula == i && item.IDLegislacao == c.IDAulaLegislacao).ToList();
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
-                                                <input type="checkbox" @(checado = (listDeComentarios.Count <= i) ? "checked" : "") name="check" class="AulaLeg" id="check-@i" value="@i">
+                                                <input type="checkbox" @(formatado = (listDeComentarios.Any()) ? "checked disabled='disabled'" : "") name="check" class="AulaLeg" id="check-@i" value="@i">
                                             </div>
                                         </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <input type="checkbox" name="check" class="AulaLeg" id="check-@i" value="@i">
-                                            </div>
-                                        </div>
-                                    }
                                     <label class="input-group-text" for="check-@i">Aula @i</label>
                                     if (listDeComentarios.Any())
                                     {
