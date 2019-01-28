@@ -152,7 +152,6 @@ C:\Users\manel\source\repos\sistemaPerguntas\sistemaPerguntasWeb\sistemaPergunta
 C:\Users\manel\source\repos\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\obj\Debug\sistemaPerguntasWeb.csproj.CopyComplete
 C:\Users\manel\source\repos\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\obj\Debug\sistemaPerguntasWeb.dll
 C:\Users\manel\source\repos\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\obj\Debug\sistemaPerguntasWeb.pdb
-C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\obj\Debug\sistemaPerguntasWeb.csprojAssemblyReference.cache
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\obj\Debug\sistemaPerguntasWeb.csproj.CoreCompileInputs.cache
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\obj\Debug\sistemaPerguntasWeb.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\obj\Debug\sistemaPerguntasWeb.pdb
@@ -177,15 +176,12 @@ C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPe
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\Microsoft.Win32.Primitives.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.AppContext.dll
-C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.Console.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.Diagnostics.Process.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.Diagnostics.StackTrace.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.IO.Compression.dll
-C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
-C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.IO.Pipes.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.Security.AccessControl.dll
@@ -460,3 +456,7 @@ C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPe
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\MySql.Data.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\Google.Protobuf.xml
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\MySql.Data.xml
+C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\obj\Debug\sistemaPerguntasWeb.csprojAssemblyReference.cache
