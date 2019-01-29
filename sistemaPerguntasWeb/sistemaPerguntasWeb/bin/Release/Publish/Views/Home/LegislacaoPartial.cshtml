@@ -1,35 +1,56 @@
 ﻿@model List<Legislacao>
+@{string formatado = "";}
+
 <div id="accordion">
     @foreach (var item in @Model)
     {
         using (Html.BeginForm("LegislacaoPartial", "Home", FormMethod.Post, new { @id = "form-legislacao" }))
         {
-            <div class="card">
-                <div class="card-header" id="heading-@item.IDLegislacao">
-                    <h5 class="mb-0">
-                        <a href="#" class="list-group-item list-group-item-action lista" data-toggle="collapse" data-target="#collapse-@item.IDLegislacao" aria-expanded="true" aria-controls="collapse-@item.IDLegislacao">
-                            @item.Descricao
-                        </a>
-                    </h5>
-                </div>
-                <div id="collapse-@item.IDLegislacao" class="collapse" aria-labelledby="heading-@item.IDLegislacao" data-parent="#accordion">
-                    <div class="card-body list-group-item">
-                        @for (int i = 1; i < item.QuantidadeAulas + 1; i++)
-                        {
+            <fieldset name="TemaID-@item.IDLegislacao">
+                <div class="card">
+                    <div class="card-header" id="heading-@item.IDLegislacao">
+                        <h5 class="mb-0">
+                            <a href="#" class="list-group-item list-group-item-action lista" data-toggle="collapse" data-target="#collapse-@item.IDLegislacao" aria-expanded="true" aria-controls="collapse-@item.IDLegislacao">
+                                @item.Tema
+                            </a>
+                        </h5>
+                    </div>
+                    <div id="collapse-@item.IDLegislacao" class="collapse" aria-labelledby="heading-@item.IDLegislacao" data-parent="#accordion">
+                        <div class="card-body list-group-item">
+                            @for (int i = 1; i < item.QuantidadeAulasParaOTema + 1; i++)
+                            {
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <input type="checkbox" name="check-@i" class="AulaLeg" id="check-@i" value="@i">
-                                    </div>
-                                </div>
-                                <label class="input-group-text" for="check-@i">Aula @i</label>
-                                <input type="text" name="comentario-@i" class="form-control" disabled="disabled" placeholder="Comentário...">
-                            </div><hr >
-                        }
-                        <button type="submit" class="btn btn-success" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Salvar">Salvar</button>
+                                @{
+                                    var listDeComentarios = item.Comentarios.Where(c => c.NumeroDaAula == i && item.IDLegislacao == c.IDAulaLegislacao).ToList();
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <input type="checkbox" @(formatado = (listDeComentarios.Any()) ? "checked disabled='disabled'" : "") name="check" class="AulaLeg" id="check-@i" value="@i">
+                                            </div>
+                                        </div>
+                                    <label class="input-group-text" for="check-@i">Aula @i</label>
+                                    if (listDeComentarios.Any())
+                                    {
+                                        foreach (var comentario in listDeComentarios)
+                                        {
+                                            <input type="text" name="comentario" class="form-control" disabled="disabled" placeholder="Comentário..."
+                                                   value="@comentario.ComentarioDaAulaDeLegislacao">
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="comentario" class="form-control" disabled="disabled" placeholder="Comentário..."
+                                               value="">
+                                    }
+
+                                }
+
+                            </div><hr>
+                            }
+                            <button type="submit" class="btn btn-success" name="btnID" value="@item.IDLegislacao" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Salvar">Salvar</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </fieldset>
         }
     }
 </div>

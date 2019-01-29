@@ -8,11 +8,16 @@ $(document).ready(function () {
         + "<p>Ao clicar no botão iniciar, você terá 60 minutos para completar a prova. "
         + "São quatro opções por pergunta, sendo uma resposta correta. Ao finalizar, clique no respectivo botão para encerrar a prova.</p>"
         + "<p>Boa sorte!</p>");
+    $(".modal-footer").html(
+        "<input class='btn btn-danger' type='button' value='Sair' id='btnVoltar' onclick='history.back()' />"
+        + "<input class='btn btn-success' type='button' value='Iniciar' id='btnIniciar' />"
+    );
+
 
     $("#btnIniciar").click(function () {
         $(this).attr("data-dismiss", "modal")
         var tempo = new Number();
-        tempo = 3599;
+        tempo = 60;
         setInterval(function startCountdown() {
 
             if ((tempo - 1) >= 0) {
@@ -31,8 +36,44 @@ $(document).ready(function () {
                 $("#sessao").html(horaImprimivel);
                 tempo--;
             } else {
-                alert("Tempo expirado, você foi reprovado!");
+                $('#exampleModalCenter').modal('show');
+                $(".modal-body").html(
+                    "<h1>Tempo expirado</h1>"
+                    + "<p>Desculpe, Você foi reprovado!</p>");
+                $(".modal-footer").html(
+                    "<input class='btn btn-danger' type='button' value='Voltar' id='btnVoltar' onclick='history.back()' />"
+                    + "<input class='btn btn-info' type='button' value='Refazer' id='btnVoltar' onclick='location.reload()' />"
+                );
             }
         }, 1000)
+    })
+    $("form").submit(() => {
+        $.ajax({
+            url: "/Perguntas/Submit",
+            type: "POST",
+            dataType: "json",
+            success: function (result) {
+                if (result == "Invalido") {
+                    $('#exampleModalCenter').modal('show');
+                    $(".modal-body").html(
+                        "<h1>Prova finalizada</h1>"
+                        + "<p>Parabéns, Você foi aprovado(a)!</p>");
+                    $(".modal-footer").html(
+                        "<input class='btn btn-danger' type='button' value='Voltar' id='btnVoltar' onclick='history.back()' />"
+                        + "<input class='btn btn-info' type='button' value='Refazer' id='btnVoltar' onclick='location.reload()' />"
+                    );
+                }
+                else {
+                    $('#exampleModalCenter').modal('show');
+                    $(".modal-body").html(
+                        "<h1>Prova finalizada</h1>"
+                        + "<p>Desculpe, Você foi reprovado(a)!</p>");
+                    $(".modal-footer").html(
+                        "<input class='btn btn-danger' type='button' value='Voltar' id='btnVoltar' onclick='history.back()' />"
+                        + "<input class='btn btn-info' type='button' value='Refazer' id='btnVoltar' onclick='location.reload()' />"
+                    );
+                }
+            },
+        });
     })
 });

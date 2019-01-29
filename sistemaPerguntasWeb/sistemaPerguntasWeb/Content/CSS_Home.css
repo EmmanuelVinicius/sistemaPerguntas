@@ -3,7 +3,6 @@
         margin-top: 50px;
         font-family: 'Varela Round';
     }
-    /*html, body, #wrapper, #page-wrapper {height: 100%; overflow: hidden;}*/
 }
 
 #wrapper {
@@ -97,7 +96,6 @@
         border-top: 1px rgba(0,0,0,.5) solid;
         overflow-y: auto;
         background-color: #222;
-        /*background-color: #5A6B7D;*/
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
@@ -125,7 +123,6 @@
         display: block;
         padding: 10px 15px 10px 38px;
         text-decoration: none;
-        /*color: #999;*/
         color: #fff;
     }
 

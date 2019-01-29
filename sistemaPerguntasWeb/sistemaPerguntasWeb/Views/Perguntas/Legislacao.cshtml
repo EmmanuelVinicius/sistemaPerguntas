@@ -11,26 +11,24 @@
                 <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
             </div>
             <div class="modal-body"></div>
-            <div class="modal-footer">
-                <input class="btn btn-success" type="button" value="Iniciar" id="btnIniciar" />
-            </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 </div>
-    <h2 id="sessao" class="pull-right"></h2>
+<h2 id="sessao" class="pull-right"></h2>
 <div class="container">
     @{
 
         int pri, seg, ter, qua, i = 1, j = 0;
-        foreach (var pergunta in @Model)
-        {
-            pri = j;
-            seg = j + 1;
-            ter = j + 2;
-            qua = j + 3;
-            <fieldset id="field-@i">
-                <div style="background:#fff;border:1px solid lightgray; border-radius:6px;padding:1em;">
-                    <form action="@Url.Action("Perguntas","Legislacao")" method="post">
+        <form action="@Url.Action("Legislacao","Perguntas")" method="post">
+            @foreach (var pergunta in @Model)
+            {
+                pri = j;
+                seg = j + 1;
+                ter = j + 2;
+                qua = j + 3;
+                <fieldset id="field-@i">
+                    <div style="background:#fff;border:1px solid lightgray; border-radius:6px;padding:1em;">
                         <div class="funkyradio col-xl-12">
                             <p>@i ) @pergunta.Corpo</p>
                             <div class="funkyradio-default">
@@ -50,14 +48,14 @@
                                 <label for="radio-@qua">@pergunta.OpcaoD</label>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </fieldset>
-            i++;
-            j += 4;
+                    </div>
+                </fieldset>
+                i++;
+                j += 4;
 
-        }
+            }
         <br>
         <button type="submit" class="btn btn-primary pull-right">Finalizar</button>
+        </form>
     }
 </div>

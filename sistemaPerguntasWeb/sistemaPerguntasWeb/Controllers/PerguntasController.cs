@@ -15,8 +15,28 @@ namespace sistemaPerguntasWeb.Controllers
         public ActionResult Legislacao()
         {
             List<Perguntas> perguntas = new List<Perguntas>();
+            return View(TrazAsPerguntas(perguntas));
+        }
+        [HttpPost]
+        public ActionResult Submit(List<Perguntas> model)
+        {
+            var lista = TrazAsPerguntas(model);
+
+            int pontos = 0;
+            for (int i = 0; i < lista.Count; i++)
+            {
+                var selecao = Request.Form["radio-" + i];
+                if (selecao == lista[i].Certo)
+                    pontos++;
+            }
+            var resultado = (pontos >= 2) ? true : false;
+            return Json(resultado);
+        }
+        public List<Perguntas> TrazAsPerguntas(List<Perguntas> perguntas)
+        {
+            perguntas = new List<Perguntas>();
             var command = SQL.GetDataSet("SELECT * FROM Perguntas");
-            for (int i = 0; i < command.Tables[0].Rows.Count; i++)
+            for (int i = 0; i < /*command.Tables[0].Rows.Count*/2; i++)
             {
                 perguntas.Add(new Perguntas());
                 perguntas[i].ID = (int)command.Tables[0].Rows[i]["ID"];
@@ -27,30 +47,7 @@ namespace sistemaPerguntasWeb.Controllers
                 perguntas[i].OpcaoD = command.Tables[0].Rows[i]["OpcaoD"].ToString();
                 perguntas[i].Certo = command.Tables[0].Rows[i]["RespostaCerta"].ToString();
             }
-            return View(perguntas);
-        }
-        [HttpPost]
-        public ActionResult Legislacao(List<Perguntas> model)
-        {
-            int pontos = 0;
-            model = new List<Perguntas>();
-            /*
-            model.Add(new Perguntas(1, "Quantas aulas é necessário para fazer o exame de direção?", "10", "20", "30", "40", "b"));
-            model.Add(new Perguntas(2, "Quantas aulas é necessário para fazer a prova de legislação?", "15", "25", "35", "45", "d"));
-            */
-            for (int i = 0; i < model.Count; i++)
-            {
-                var botao = Request.Form["radio" + i];
-                if (botao == model[i].Certo)
-                {
-                    pontos++;
-                }
-            }
-            if (pontos > 20)
-            {
-
-            }
-            return View();
+            return perguntas;
         }
     }
 }
