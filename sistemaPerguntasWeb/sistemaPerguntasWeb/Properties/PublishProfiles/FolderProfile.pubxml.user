@@ -220,10 +220,10 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/10/2018 11:36:25</publishTime>
     </File>
     <File Include="bin/sistemaPerguntasWeb.dll">
-      <publishTime>01/29/2019 10:07:04</publishTime>
+      <publishTime>02/01/2019 13:49:49</publishTime>
     </File>
     <File Include="bin/sistemaPerguntasWeb.pdb">
-      <publishTime>01/29/2019 10:07:04</publishTime>
+      <publishTime>02/01/2019 13:49:49</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>09/10/2018 11:36:25</publishTime>
@@ -247,7 +247,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>09/14/2018 09:49:05</publishTime>
     </File>
     <File Include="Content/CSS_Home.css">
-      <publishTime>01/23/2019 09:27:35</publishTime>
+      <publishTime>01/29/2019 10:17:21</publishTime>
     </File>
     <File Include="Content/CSS_Main.css">
       <publishTime>09/10/2018 11:36:26</publishTime>
@@ -262,7 +262,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>11/14/2018 15:43:14</publishTime>
     </File>
     <File Include="Scripts/JS_Quiz.js">
-      <publishTime>09/13/2018 13:34:43</publishTime>
+      <publishTime>02/01/2019 13:42:34</publishTime>
     </File>
     <File Include="Views/Auth/ForgPass.cshtml">
       <publishTime>09/10/2018 11:36:26</publishTime>
@@ -271,7 +271,7 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>11/14/2018 15:44:08</publishTime>
     </File>
     <File Include="Views/Auth/Register.cshtml">
-      <publishTime>09/10/2018 11:36:26</publishTime>
+      <publishTime>01/29/2019 16:02:11</publishTime>
     </File>
     <File Include="Views/Home/DirecaoPartial.cshtml">
       <publishTime>01/23/2019 09:24:32</publishTime>
@@ -283,22 +283,22 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
       <publishTime>01/21/2019 17:04:27</publishTime>
     </File>
     <File Include="Views/Home/LegislacaoPartial.cshtml">
-      <publishTime>01/28/2019 15:07:37</publishTime>
+      <publishTime>01/29/2019 16:01:50</publishTime>
     </File>
     <File Include="Views/Home/MinhasAulas.cshtml">
       <publishTime>01/21/2019 17:48:56</publishTime>
     </File>
     <File Include="Views/Home/ProgramacaoAulas.cshtml">
-      <publishTime>12/05/2018 14:03:30</publishTime>
+      <publishTime>01/29/2019 16:01:35</publishTime>
     </File>
     <File Include="Views/Home/ProgramacaoDiversas.cshtml">
       <publishTime>11/20/2018 11:52:12</publishTime>
     </File>
     <File Include="Views/Perguntas/Legislacao.cshtml">
-      <publishTime>01/28/2019 16:15:29</publishTime>
+      <publishTime>02/01/2019 13:33:27</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutHome.cshtml">
-      <publishTime>01/22/2019 08:32:26</publishTime>
+      <publishTime>01/29/2019 16:05:45</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutLogin.cshtml">
       <publishTime>09/10/2018 11:36:26</publishTime>

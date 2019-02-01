@@ -8,14 +8,19 @@ $(document).ready(function () {
         + "<p>Ao clicar no botão iniciar, você terá 60 minutos para completar a prova. "
         + "São quatro opções por pergunta, sendo uma resposta correta. Ao finalizar, clique no respectivo botão para encerrar a prova.</p>"
         + "<p>Boa sorte!</p>");
+    $(".modal-footer").html(
+        "<input class='btn btn-danger' type='button' value='Sair' id='btnVoltar' onclick='history.back()' />"
+        + "<input class='btn btn-success' type='button' value='Iniciar' id='btnIniciar' />"
+    );
+
 
     $("#btnIniciar").click(function () {
         $(this).attr("data-dismiss", "modal")
         var tempo = new Number();
-        tempo = 3599;
+        tempo = 3600;
         setInterval(function startCountdown() {
 
-            if ((tempo - 1) >= 0) {
+            if ((tempo - 1) >= -1) {
                 var min = parseInt(tempo / 60);
                 var seg = tempo % 60;
 
@@ -31,8 +36,63 @@ $(document).ready(function () {
                 $("#sessao").html(horaImprimivel);
                 tempo--;
             } else {
-                alert("Tempo expirado, você foi reprovado!");
+                $('#exampleModalCenter').modal('show');
+                $(".modal-body").html(
+                    "<h1>Tempo expirado</h1>"
+                    + "<p>Desculpe, Você foi reprovado!</p>");
+                $(".modal-footer").html(
+                    "<input class='btn btn-danger' type='button' value='Voltar' id='btnVoltar' onclick='history.back()' />"
+                    + "<input class='btn btn-info' type='button' value='Refazer' id='btnVoltar' onclick='location.reload()' />"
+                );
             }
         }, 1000)
+    })
+    $("form").submit((e) => {
+        if ($('input:radio', this).is(':checked')) {
+        } else {
+            alert('Por favor, responda a prova por completo!');
+            return false;
+        }
+        var inputs = new Array();
+        $("input:checked").each(function () {
+            inputs.push(this.value);
+        });
+        $.ajax({
+            url: "/Perguntas/Legislacao",
+            type: "POST",
+            dataType: "json",
+            data: {
+                inputs: JSON.stringify(inputs)
+            },
+            async: false,
+            cache: false,
+            timeout: 30000,
+            success: function (result) {
+                if (result) {
+                    $('#exampleModalCenter').modal('show');
+                    $(".modal-body").css("background-color", "#baed91").html(
+                        "<h1>Parabéns</h1>"
+                        + "<p>Você foi aprovado(a)!</p>");
+                    $(".modal-footer").html(
+                        "<input class='btn btn-danger' type='button' value='Voltar' id='btnVoltar' onclick='history.back()' />"
+                        + "<input class='btn btn-info' type='button' value='Refazer' id='btnVoltar' onclick='location.reload()' />"
+                    );
+                    return false;
+                }
+                else {
+                    $('#exampleModalCenter').modal('show');
+                    $(".modal-body").css("background-color", "#fea3aa").html(
+                        "<h1>Desculpe</h1>"
+                        + "<p>Você foi reprovado(a)!</p>");
+                    $(".modal-footer").html(
+                        "<input class='btn btn-danger' type='button' value='Voltar' id='btnVoltar' onclick='history.back()' />"
+                        + "<input class='btn btn-info' type='button' value='Refazer' id='btnVoltar' onclick='location.reload()' />"
+                    );
+                    return false;
+                }
+            },
+
+        });
+        e.preventDefault();
     })
 });

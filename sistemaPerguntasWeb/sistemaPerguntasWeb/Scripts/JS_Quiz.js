@@ -17,10 +17,10 @@ $(document).ready(function () {
     $("#btnIniciar").click(function () {
         $(this).attr("data-dismiss", "modal")
         var tempo = new Number();
-        tempo = 60;
+        tempo = 3600;
         setInterval(function startCountdown() {
 
-            if ((tempo - 1) >= 0) {
+            if ((tempo - 1) >= -1) {
                 var min = parseInt(tempo / 60);
                 var seg = tempo % 60;
 
@@ -47,33 +47,52 @@ $(document).ready(function () {
             }
         }, 1000)
     })
-    $("form").submit(() => {
+    $("form").submit((e) => {
+        if ($('input:radio', this).is(':checked')) {
+        } else {
+            alert('Por favor, responda a prova por completo!');
+            return false;
+        }
+        var inputs = new Array();
+        $("input:checked").each(function () {
+            inputs.push(this.value);
+        });
         $.ajax({
-            url: "/Perguntas/Submit",
+            url: "/Perguntas/Legislacao",
             type: "POST",
             dataType: "json",
+            data: {
+                inputs: JSON.stringify(inputs)
+            },
+            async: false,
+            cache: false,
+            timeout: 30000,
             success: function (result) {
-                if (result == "Invalido") {
+                if (result) {
                     $('#exampleModalCenter').modal('show');
-                    $(".modal-body").html(
-                        "<h1>Prova finalizada</h1>"
-                        + "<p>Parabéns, Você foi aprovado(a)!</p>");
+                    $(".modal-body").css("background-color", "#baed91").html(
+                        "<h1>Parabéns</h1>"
+                        + "<p>Você foi aprovado(a)!</p>");
                     $(".modal-footer").html(
                         "<input class='btn btn-danger' type='button' value='Voltar' id='btnVoltar' onclick='history.back()' />"
                         + "<input class='btn btn-info' type='button' value='Refazer' id='btnVoltar' onclick='location.reload()' />"
                     );
+                    return false;
                 }
                 else {
                     $('#exampleModalCenter').modal('show');
-                    $(".modal-body").html(
-                        "<h1>Prova finalizada</h1>"
-                        + "<p>Desculpe, Você foi reprovado(a)!</p>");
+                    $(".modal-body").css("background-color", "#fea3aa").html(
+                        "<h1>Desculpe</h1>"
+                        + "<p>Você foi reprovado(a)!</p>");
                     $(".modal-footer").html(
                         "<input class='btn btn-danger' type='button' value='Voltar' id='btnVoltar' onclick='history.back()' />"
                         + "<input class='btn btn-info' type='button' value='Refazer' id='btnVoltar' onclick='location.reload()' />"
                     );
+                    return false;
                 }
             },
+
         });
+        e.preventDefault();
     })
 });

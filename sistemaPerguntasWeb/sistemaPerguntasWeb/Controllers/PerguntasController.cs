@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,29 +15,31 @@ namespace sistemaPerguntasWeb.Controllers
         // GET: Perguntas
         public ActionResult Legislacao()
         {
-            List<Perguntas> perguntas = new List<Perguntas>();
-            return View(TrazAsPerguntas(perguntas));
+            return View(TrazAsPerguntas());
         }
         [HttpPost]
-        public ActionResult Submit(List<Perguntas> model)
+        public JsonResult Legislacao(string inputs)
         {
-            var lista = TrazAsPerguntas(model);
-
             int pontos = 0;
-            for (int i = 0; i < lista.Count; i++)
+
+            var valorLimpo = inputs.Replace('[', ' ').Replace(']', ' ').Replace('"', ' ').Replace(',', ' ').Replace(" ", "");
+            var respostas = TrazAsPerguntas();
+            for (int i = 0; i < valorLimpo.Length; i++)
             {
-                var selecao = Request.Form["radio-" + i];
-                if (selecao == lista[i].Certo)
-                    pontos++;
+                var selecao = valorLimpo.Substring(i, 1);
+                if (respostas[i].Certo == selecao.ToString())
+                {
+                    pontos ++;
+                }
             }
-            var resultado = (pontos >= 2) ? true : false;
+            var resultado = (pontos >= 21) ? true : false;
             return Json(resultado);
         }
-        public List<Perguntas> TrazAsPerguntas(List<Perguntas> perguntas)
+        public List<Perguntas> TrazAsPerguntas()
         {
-            perguntas = new List<Perguntas>();
+            List<Perguntas> perguntas = new List<Perguntas>();
             var command = SQL.GetDataSet("SELECT * FROM Perguntas");
-            for (int i = 0; i < /*command.Tables[0].Rows.Count*/2; i++)
+            for (int i = 0; i < 30; i++)
             {
                 perguntas.Add(new Perguntas());
                 perguntas[i].ID = (int)command.Tables[0].Rows[i]["ID"];

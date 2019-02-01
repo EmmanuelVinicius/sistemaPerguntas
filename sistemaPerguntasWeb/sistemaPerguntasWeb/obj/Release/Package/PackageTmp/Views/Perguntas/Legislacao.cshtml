@@ -11,53 +11,60 @@
                 <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
             </div>
             <div class="modal-body"></div>
-            <div class="modal-footer">
-                <input class="btn btn-success" type="button" value="Iniciar" id="btnIniciar" />
-            </div>
+            <div class="modal-footer"></div>
         </div>
     </div>
 </div>
-    <h2 id="sessao" class="pull-right"></h2>
+<h2 id="sessao" class="pull-right"></h2>
 <div class="container">
-    @{
-
-        int pri, seg, ter, qua, i = 1, j = 0;
-        foreach (var pergunta in @Model)
-        {
-            pri = j;
-            seg = j + 1;
-            ter = j + 2;
-            qua = j + 3;
-            <fieldset id="field-@i">
-                <div style="background:#fff;border:1px solid lightgray; border-radius:6px;padding:1em;">
-                    <form action="@Url.Action("Perguntas","Legislacao")" method="post">
+    @*@using (Html.BeginForm("Legislacao", "Perguntas", FormMethod.Post))
+        {}*@
+    <form>
+        @{
+            int pri, seg, ter, qua, i = 1, j = 0;
+            foreach (var pergunta in @Model)
+            {
+                pri = j;
+                seg = j + 1;
+                ter = j + 2;
+                qua = j + 3;
+                <fieldset id="field-@i">
+                    <div style="background:#fff;border:1px solid lightgray; border-radius:6px;padding:1em;">
                         <div class="funkyradio col-xl-12">
                             <p>@i ) @pergunta.Corpo</p>
                             <div class="funkyradio-default">
-                                <input type="radio" name="radio-@i" id="radio-@pri" value="a" />
+                                @*@Html.RadioButton("radio-" + i, "a", false, new { @id = "radio-" + pri })
+                                    @Html.Label(pergunta.OpcaoA, new { @for = "radio-" + pri })*@
+                                <input type="radio" name="radio-@i" id="radio-@pri" value="A" />
                                 <label for="radio-@pri">@pergunta.OpcaoA</label>
                             </div>
                             <div class="funkyradio-default">
-                                <input type="radio" name="radio-@i" id="radio-@seg" value="b" />
+                                @*@Html.RadioButton("radio-" + i, "b", false, new { @id = "radio-" + seg })
+                                    @Html.Label(pergunta.OpcaoB, new { @for = "radio-" + seg })*@
+                                <input type="radio" name="radio-@i" id="radio-@seg" value="B" />
                                 <label for="radio-@seg">@pergunta.OpcaoB</label>
                             </div>
                             <div class="funkyradio-default">
-                                <input type="radio" name="radio-@i" id="radio-@ter" value="c" />
+                                @*@Html.RadioButton("radio" + i, "c", false, new { @id = "radio" + ter })
+                                    @Html.Label(pergunta.OpcaoC, new { @for = "radio" + ter })*@
+                                <input type="radio" name="radio-@i" id="radio-@ter" value="C" />
                                 <label for="radio-@ter">@pergunta.OpcaoC</label>
                             </div>
                             <div class="funkyradio-default">
-                                <input type="radio" name="radio-@i" id="radio-@qua" value="d" />
+                                @*@Html.RadioButton("radio" + i, "d", false, new { @id = "radio" + qua })
+                                    @Html.Label(pergunta.OpcaoD, new { @for = "radio" + qua })*@
+                                <input type="radio" name="radio-@i" id="radio-@qua" value="D" />
                                 <label for="radio-@qua">@pergunta.OpcaoD</label>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </fieldset>
-            i++;
-            j += 4;
-
+                    </div>
+                </fieldset>
+                i++;
+                j += 4;
+            }
+            <br>
+            <h2 id="sessao" class="pull-right"></h2>
+            <button type="submit" class="btn btn-primary pull-right">Finalizar</button>
         }
-        <br>
-        <button type="submit" class="btn btn-primary pull-right">Finalizar</button>
-    }
+    </form>
 </div>
