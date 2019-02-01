@@ -5,14 +5,10 @@ using System.Web;
 
 namespace sistemaPerguntasWeb.Models
 {
-    public class Programacoes
+    public class Avisos
     {
-        public Programacoes(string _titulo)
-        {
-            Titulo = _titulo;
-        }
-        public int IDProgramacao { get; set; }
-        public DateTimeKind Data { get; set; }
+        public int IDAviso { get; set; }
+        public DateTime Data { get; set; }
         public string Titulo { get; set; }
         public string Corpo { get; set; }
         public string Fonte { get; set; }

@@ -459,3 +459,4 @@ C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPe
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\emmanueloliveira\Desktop\sistemaPerguntas\sistemaPerguntasWeb\sistemaPerguntasWeb\obj\Debug\sistemaPerguntasWeb.csprojAssemblyReference.cache

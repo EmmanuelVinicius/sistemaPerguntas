@@ -141,8 +141,17 @@ namespace sistemaPerguntasWeb.Controllers
         }
         public ActionResult ProgramacaoDiversas()
         {
-            List<Programacoes> model = new List<Programacoes>();
-            model.Add(new Programacoes("Arroz, batata e cenoura!"));
+            List<Avisos> model = new List<Avisos>();
+            var comando = SQL.GetDataSet("SELECT * FROM Avisos");
+            for (int i = 0; i < comando.Tables[0].Rows.Count; i++)
+            {
+                model.Add(new Avisos());
+                model[i].IDAviso = (int)comando.Tables[0].Rows[i]["IDAviso"];
+                model[i].Data = (DateTime)comando.Tables[0].Rows[i]["Data"];
+                model[i].Titulo = comando.Tables[0].Rows[i]["Titulo"].ToString();
+                model[i].Corpo = comando.Tables[0].Rows[i]["Corpo"].ToString();
+                model[i].Fonte = comando.Tables[0].Rows[i]["Fonte"].ToString();
+            }
             return View(model);
         }
         public RedirectToRouteResult Provinha()

@@ -1,4 +1,4 @@
-﻿@model List<Programacoes>
+﻿@model List<Avisos>
 @{
     ViewBag.Title = "Programações Diversas";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
@@ -7,16 +7,17 @@
     <div class="container-fluid">
         <div class="col-md-12 well text-center" id="content">
             <h1>Programacões</h1>
-            <div style="background:#fff;border:1px solid lightgray; border-radius:6px;padding:1em;">
-                @foreach (var item in @Model)
-                {
-                    <p id="data" class="font-weight-light text-left text-monospace">@item.Data</p>@*Canto superior esquerdo, pequeno.*@
+            @foreach (var item in @Model)
+            {
+                <div style="background:#fff;border:1px solid lightgray; border-radius:6px;padding:1em;">
+                    <p id="data" class="font-weight-light text-left text-monospace">@item.Data.ToShortDateString()</p>@*Canto superior esquerdo, pequeno.*@
                     <h3 id="titulo" class="text-center">@item.Titulo</h3>@*Centro, cima*@
                     <p id="corpo" class="text-justify">@item.Corpo</p>@*Meio da página, principal*@
-                    <p id="fonte" class="font-italic text-right text-monospace">@item.Fonte</p>@*Canto inferior direito*@
                     <hr />
-                }
-            </div>
+                    <p id="fonte" class="font-italic text-right text-monospace">@item.Fonte</p>@*Canto inferior direito*@
+                </div>
+                <br>
+            }
         </div>
     </div>
 </div>

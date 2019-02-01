@@ -75,6 +75,28 @@ constraint pk_Direcao primary key IDAluno),
 constraint fk_Direcao foreign key (IDAluno) references Alunos(IDAluno)
 );
 
+CREATE TABLE Avisos(
+IDAviso int not null auto_increment,
+Data datetime,
+Titulo text,
+Corpo text,
+Fonte text,
+CONSTRAINT PK_Avisos PRIMARY KEY (IDAviso)
+);
+
+CREATE TABLE Perguntas(
+IDPergunta int not null auto_increment,
+Corpo text,
+OpcaoA text,
+OpcaoB text,
+OpcaoC text,
+OpcaoD text,
+RespostaCerta text,
+CONSTRAINT PK_perguntas PRIMARY KEY (IDPergunta)
+);
+
+
+
 SELECT A.IDAluno, A.NomeCompleto FROM Usuarios U INNER JOIN Alunos A ON U.IDAluno = A.IDAluno WHERE U.Email = 'adm@cfctriunfo.com.br' AND U.Senha = 'b8495e00b5b4b0ba3a1234d085f4c4ccdfaf06c75431b1b7ec747980e5255e9a4869481b857195325c07f9598586dc12e783d736dd45d8975b7d6a73cc125856';
 
 insert into Alunos values(1,1, 'Administrador','04/08/18','33814411', 'Rua Barao de monte alto', 'adm@cfctriunfo.com.br',19,1);
